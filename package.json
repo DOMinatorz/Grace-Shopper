@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "dominatorz",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Gerard, Lily, Mark and Milo's Grace Shopper Project.",
   "engines": {
     "node": ">= 7.0.0"
   },
