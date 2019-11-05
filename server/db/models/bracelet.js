@@ -5,6 +5,9 @@ const Bracelet = db.define('bracelet', {
   style: {
     type: Sequelize.STRING
   },
+  material: {
+    type: Sequelize.STRING
+  },
   color: {
     type: Sequelize.STRING
   },
