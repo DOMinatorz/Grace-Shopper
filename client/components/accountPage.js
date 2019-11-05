@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-export class accountPage extends Component {
+export class AccountPage extends Component {
   render() {
     return (
       <div>
@@ -18,4 +18,4 @@ const mapStateToProps = state => ({})
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(accountPage)
+export default connect(mapStateToProps, mapDispatchToProps)(AccountPage)
