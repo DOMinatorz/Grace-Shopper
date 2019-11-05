@@ -14,14 +14,17 @@ class AllBracelets extends Component {
   }
 
   render() {
+    console.log('how many times do i render')
     const bracelets = this.props.bracelets
     console.log('this is bracelets', bracelets)
+    console.log('this is this.props', this.props)
     if (!bracelets) return <div>Loading...</div>
     else {
       return (
         <div id="all_bracelets">
           {bracelets.map(bracelet => {
-            return <p key={bracelet.id}>{bracelet.name}</p>
+            console.log('this is bracelet', bracelet)
+            return <p key={bracelet.id}> {bracelet.style} </p>
           })}
         </div>
       )
