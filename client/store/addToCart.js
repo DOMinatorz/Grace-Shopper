@@ -66,8 +66,8 @@ export const cart = (state = initialCart, action) => {
         }
       })
 
-      if (idx) {
-        ++state[idx].qty
+      if (idx || idx === 0) {
+        state[idx].qty++
         return state
       } else return [...state, action.bracelet]
 

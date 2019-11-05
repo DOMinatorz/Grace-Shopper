@@ -28,7 +28,7 @@ async function seed() {
       style: 'solitary',
       material: 'leather',
       color: 'black',
-      qty: 100,
+      qty: 0,
       price: 100.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -37,7 +37,7 @@ async function seed() {
       style: 'solitary',
       material: 'suede',
       color: 'teal',
-      qty: 100,
+      qty: 0,
       price: 100.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -46,7 +46,7 @@ async function seed() {
       style: 'solitary',
       material: 'leather',
       color: 'tan',
-      qty: 100,
+      qty: 0,
       price: 100.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -55,7 +55,7 @@ async function seed() {
       style: 'solitary',
       material: 'leather',
       color: 'tan',
-      qty: 100,
+      qty: 0,
       price: 100.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -64,7 +64,7 @@ async function seed() {
       style: 'solitary',
       material: 'leather',
       color: 'tan',
-      qty: 100,
+      qty: 0,
       price: 100.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -73,7 +73,7 @@ async function seed() {
       style: 'solitary',
       material: 'leather',
       color: 'tan',
-      qty: 100,
+      qty: 0,
       price: 100.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -82,7 +82,7 @@ async function seed() {
       style: 'double',
       material: 'leather',
       color: 'black',
-      qty: 100,
+      qty: 0,
       price: 200.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -91,7 +91,7 @@ async function seed() {
       style: 'double',
       material: 'suede',
       color: 'teal',
-      qty: 100,
+      qty: 0,
       price: 200.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -100,7 +100,7 @@ async function seed() {
       style: 'double',
       material: 'leather',
       color: 'tan',
-      qty: 100,
+      qty: 0,
       price: 200.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -109,7 +109,7 @@ async function seed() {
       style: 'triple',
       material: 'leather',
       color: 'black',
-      qty: 100,
+      qty: 0,
       price: 300.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -118,7 +118,7 @@ async function seed() {
       style: 'triple',
       material: 'suede',
       color: 'teal',
-      qty: 100,
+      qty: 0,
       price: 300.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -127,7 +127,7 @@ async function seed() {
       style: 'triple',
       material: 'leather',
       color: 'tan',
-      qty: 100,
+      qty: 0,
       price: 300.0,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
