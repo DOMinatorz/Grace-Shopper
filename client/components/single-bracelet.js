@@ -14,7 +14,8 @@ class SingleBracelet extends Component {
   render() {
     let bracelet = this.props.bracelet[0]
 
-    if (!bracelet) return <div>Loading...</div>
+    if (!bracelet || this.props.bracelet.length > 1)
+      return <div>Loading...</div>
     else
       return (
         <div>
