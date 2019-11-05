@@ -1,26 +1,39 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {getSingleBraceletThunk} from '../store/bracelet'
 
-const SingleBracelet = props => {
-  const id = Number(props.match.params.id)
-  let bracelet = props.bracelets.filter(bracelet => {
-    return bracelet.id === id
-  })
-  bracelet = bracelet[0]
-  return (
-    <div>
-      <h1>Style: {bracelet.style}</h1>
-      <h1>Material: {bracelet.material}</h1>
-      <h1>Color: {bracelet.color}</h1>
-      <h1>Price: {bracelet.price}</h1>
-      <img src={bracelet.image} />
-    </div>
-  )
-}
-const mapStateToProps = state => {
-  return {
-    bracelets: state.bracelets
+class SingleBracelet extends Component {
+  componentDidMount() {
+    const id = Number(this.props.match.params.id)
+    this.props.getSingleBracelet(id)
+  }
+
+  // there is an issue where when you navigate between bracelets the previous bracelet loads for a millisecond before changing. Thinking we can use componentWillUpdate or componentWillReceiveProps or something like that
+
+  render() {
+    let bracelet = this.props.bracelet[0]
+
+    if (!bracelet) return <div>Loading...</div>
+    else
+      return (
+        <div>
+          <h1>Style: {bracelet.style}</h1>
+          <h1>Material: {bracelet.material}</h1>
+          <h1>Color: {bracelet.color}</h1>
+          <h1>Price: {bracelet.price}</h1>
+          <img src={bracelet.image} />
+        </div>
+      )
   }
 }
 
-export default connect(mapStateToProps)(SingleBracelet)
+const mapDispatchToProps = dispatch => ({
+  getSingleBracelet: id => dispatch(getSingleBraceletThunk(id))
+})
+
+const mapStateToProps = state => {
+  return {
+    bracelet: state.bracelets
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SingleBracelet)
