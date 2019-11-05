@@ -25,7 +25,7 @@ async function seed() {
 
   const bracelets = await Promise.all([
     Bracelet.create({
-      style: 'single',
+      style: 'solitary',
       material: 'leather',
       color: 'black',
       qty: 100,
@@ -34,7 +34,7 @@ async function seed() {
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'single',
+      style: 'solitary',
       material: 'suede',
       color: 'teal',
       qty: 100,
@@ -43,7 +43,34 @@ async function seed() {
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'single',
+      style: 'solitary',
+      material: 'leather',
+      color: 'tan',
+      qty: 100,
+      price: 100.0,
+      image:
+        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+    }),
+    Bracelet.create({
+      style: 'solitary',
+      material: 'leather',
+      color: 'tan',
+      qty: 100,
+      price: 100.0,
+      image:
+        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+    }),
+    Bracelet.create({
+      style: 'solitary',
+      material: 'leather',
+      color: 'tan',
+      qty: 100,
+      price: 100.0,
+      image:
+        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+    }),
+    Bracelet.create({
+      style: 'solitary',
       material: 'leather',
       color: 'tan',
       qty: 100,

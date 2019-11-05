@@ -9,6 +9,7 @@ class AllBracelets extends Component {
 
   componentDidMount() {
     // this isnt causing an update so the render only happens once
+    // still not working
     this.props.getAllBracelets()
   }
 
