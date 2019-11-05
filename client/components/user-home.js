@@ -12,7 +12,6 @@ export const UserHome = props => {
   return (
     <div>
       <h3>Welcome, {firstName}</h3>
-      <accountPage />
     </div>
   )
 }
