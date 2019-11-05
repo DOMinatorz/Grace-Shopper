@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 export class Cart extends Component {
   render() {
-    return <div />
+    return <div>Your Cart is Empty</div>
   }
 }
 
