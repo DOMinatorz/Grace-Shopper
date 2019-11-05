@@ -67,9 +67,12 @@ export const cart = (state = initialCart, action) => {
       })
 
       if (idx || idx === 0) {
-        state[idx].qty++
+        state[idx].qty = state[idx].qty + 1
         return state
-      } else return [...state, action.bracelet]
+      } else {
+        action.bracelet.qty++
+        return [...state, action.bracelet]
+      }
 
     case REMOVE_FROM_CART:
       state.filter(bracelet => action.bracelet.id !== bracelet.id)
