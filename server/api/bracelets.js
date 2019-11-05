@@ -10,3 +10,20 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const bracelet = await Bracelet.findAll({
+      where: {
+        id: req.params.id
+      }
+    })
+
+    if (!bracelet) {
+      res.status(404).send(`Sorry, we don't have that bracelet!`)
+    }
+    res.send(bracelet)
+  } catch (err) {
+    next(err)
+  }
+})
