@@ -3,19 +3,13 @@ const db = require('../db')
 
 const Cart = db.define('cart', {
   // going to place on your Cart table, which is NOT a join table
+
+  // this will have a userId and a foreign key by default
+
   isPurchased: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false
-    // would like this to NOT be null
-  },
-  price: {
-    // changing back to INT
-    type: Sequelize.DECIMAL(10, 2),
-    allowNull: true
-  },
-  // going into your JOIN table, and should also have a minimum**
-  qty: {
-    type: Sequelize.INTEGER
+    defaultValue: false,
+    allowNull: false
   }
 })
 

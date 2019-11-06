@@ -25,110 +25,146 @@ async function seed() {
 
   const bracelets = await Promise.all([
     Bracelet.create({
-      style: 'solitary',
-      material: 'leather',
-      color: 'black',
-      qty: 0,
-      price: 100.0,
+      style: 'Solitary',
+      material: 'Leather',
+      color: 'Black',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'solitary',
-      material: 'suede',
-      color: 'teal',
-      qty: 0,
-      price: 100.0,
+      style: 'Solitary',
+      material: 'Suede',
+      color: 'Ocean',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'solitary',
-      material: 'leather',
-      color: 'tan',
-      qty: 0,
-      price: 100.0,
+      style: 'Solitary',
+      material: 'Leather',
+      color: 'Tan',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'solitary',
-      material: 'leather',
-      color: 'tan',
-      qty: 0,
-      price: 100.0,
+      style: 'Solitary',
+      material: 'Leather',
+      color: 'Tan',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'solitary',
-      material: 'leather',
-      color: 'tan',
-      qty: 0,
-      price: 100.0,
+      style: 'Solitary',
+      material: 'Leather',
+      color: 'Tan',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'solitary',
-      material: 'leather',
-      color: 'tan',
-      qty: 0,
-      price: 100.0,
+      style: 'Solitary',
+      material: 'Leather',
+      color: 'Tan',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'double',
-      material: 'leather',
-      color: 'black',
-      qty: 0,
-      price: 200.0,
+      style: 'Pair',
+      material: 'Leather',
+      color: 'Black',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 20000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'double',
-      material: 'suede',
-      color: 'teal',
-      qty: 0,
-      price: 200.0,
+      style: 'Pair',
+      material: 'Suede',
+      color: 'Ocean',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 20000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'double',
-      material: 'leather',
-      color: 'tan',
-      qty: 0,
-      price: 200.0,
+      style: 'Pair',
+      material: 'Leather',
+      color: 'Tan',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 20000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'triple',
-      material: 'leather',
-      color: 'black',
-      qty: 0,
-      price: 300.0,
+      style: 'Trio',
+      material: 'Leather',
+      color: 'Black',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 30000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'triple',
-      material: 'suede',
-      color: 'teal',
-      qty: 0,
-      price: 300.0,
+      style: 'Trio',
+      material: 'Suede',
+      color: 'Ocean',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 30000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     }),
     Bracelet.create({
-      style: 'triple',
-      material: 'leather',
-      color: 'tan',
-      qty: 0,
-      price: 300.0,
+      style: 'Trio',
+      material: 'Leather',
+      color: 'Tan',
+      longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
+      description:
+        'Single row leather bracelet with acrylic studs and metal hardware...etc.',
+      inventory: 0,
+      price: 30000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
     })
