@@ -28,6 +28,16 @@ export const removeFromCart = bracelet => ({
   bracelet
 })
 
+export const incrementQty = bracelet => ({
+  type: INCREASE_QTY,
+  bracelet
+})
+
+export const decrementQty = bracelet => ({
+  type: DECREASE_QTY,
+  bracelet
+})
+
 // the below assumes that cart is an array as opposed to an object
 // the benefit of array is to keep the order that the bracelets were added to the cart
 // the benefit of switching to an object would be to avoid having to find the index of an existing item if the value is going to get incremented
@@ -50,9 +60,13 @@ export const cart = (state = initialCart, action) => {
         return [...state, action.bracelet]
       }
     case INCREASE_QTY:
+      action.bracelet.qty++
       return state
 
     case DECREASE_QTY:
+      if (action.bracelet.qty === 1) {
+        return state.filter(bracelet => bracelet !== action.bracelet)
+      } else action.bracelet.qty--
       return state
 
     case REMOVE_FROM_CART:
@@ -67,6 +81,14 @@ export const total = (state = initialTotal, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       return state + Number(action.bracelet.price)
+
+    case INCREASE_QTY:
+      return state + Number(action.bracelet.price)
+
+    case DECREASE_QTY:
+      if (state - Number(action.bracelet.price) <= 0) {
+        return 0
+      } else return state - Number(action.bracelet.price)
 
     case REMOVE_FROM_CART:
       return state - Number(action.bracelet.price * action.bracelet.qty)
