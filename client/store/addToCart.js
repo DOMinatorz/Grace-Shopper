@@ -6,6 +6,8 @@ import history from '../history'
  */
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+const INCREASE_QTY = 'INCREASE_QTY'
+const DECREASE_QTY = 'DECREASE_QTY'
 
 /**
  * INITIAL STATE
@@ -26,31 +28,15 @@ export const removeFromCart = bracelet => ({
   bracelet
 })
 
-/**
- * THUNK CREATORS
- */
+export const incrementQty = bracelet => ({
+  type: INCREASE_QTY,
+  bracelet
+})
 
-// export const addBraceletToCartThunk = id => async dispatch => {
-//   try {
-//     const {data} = await axios.get(`/api/bracelets/${id}`)
-//     dispatch(addToCart(data))
-//   } catch (error) {
-//     console.log('there was an error in the addBraceletToCartThunk')
-//   }
-// }
-
-// export const removeBraceletFromCartThunk = id => async dispatch => {
-//   try {
-//     const {data} = await axios.get(`/api/bracelets/${id}`)
-//     dispatch(removeFromCart(data))
-//   } catch (error) {
-//     console.log('there was an error in the removeBraceletFromCartThunk')
-//   }
-// }
-
-/**
- * REDUCER
- */
+export const decrementQty = bracelet => ({
+  type: DECREASE_QTY,
+  bracelet
+})
 
 // the below assumes that cart is an array as opposed to an object
 // the benefit of array is to keep the order that the bracelets were added to the cart
@@ -73,10 +59,18 @@ export const cart = (state = initialCart, action) => {
         action.bracelet.qty++
         return [...state, action.bracelet]
       }
+    case INCREASE_QTY:
+      action.bracelet.qty++
+      return state
+
+    case DECREASE_QTY:
+      if (action.bracelet.qty === 1) {
+        return state.filter(bracelet => bracelet !== action.bracelet)
+      } else action.bracelet.qty--
+      return state
 
     case REMOVE_FROM_CART:
-      state.filter(bracelet => action.bracelet.id !== bracelet.id)
-      return state
+      return state.filter(bracelet => action.bracelet.id !== bracelet.id)
 
     default:
       return state
@@ -88,8 +82,16 @@ export const total = (state = initialTotal, action) => {
     case ADD_TO_CART:
       return state + Number(action.bracelet.price)
 
+    case INCREASE_QTY:
+      return state + Number(action.bracelet.price)
+
+    case DECREASE_QTY:
+      if (state - Number(action.bracelet.price) <= 0) {
+        return 0
+      } else return state - Number(action.bracelet.price)
+
     case REMOVE_FROM_CART:
-      return state - Number(action.bracelet.price)
+      return state - Number(action.bracelet.price * action.bracelet.qty)
 
     default:
       return state
