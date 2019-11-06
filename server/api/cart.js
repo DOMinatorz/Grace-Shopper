@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {Cart} = require('../db/models')
+const {Cart, ItemsCart, Bracelet} = require('../db/models')
+const {Op} = require('sequelize')
 module.exports = router
 
 // router.get('/:id', async (req, res, next) => {
@@ -20,8 +21,34 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const allBracelets = await Cart.findAll()
-    if (allBracelets) res.send(allBracelets)
+    console.log('this is req.user.id', req.user.id)
+    let cartId = await Cart.findAll({
+      where: {
+        userId: req.user.id
+      },
+      attributes: ['id']
+    })
+    cartId = cartId[0].id
+
+    let braceletIds = await ItemsCart.findAll({
+      where: {
+        cartId: cartId
+      },
+      attributes: ['braceletId']
+    })
+
+    let arrBraceletIds = braceletIds.map(bracelet => {
+      return bracelet.braceletId
+    })
+
+    const bracelets = await Bracelet.findAll({
+      where: {
+        id: {
+          [Op.in]: arrBraceletIds
+        }
+      }
+    })
+    if (bracelets) res.send(bracelets)
     else res.status(404).send(`404 - Can't find Your Items!`)
   } catch (err) {
     next(err)
