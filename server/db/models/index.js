@@ -28,5 +28,6 @@ Cart.belongsToMany(Bracelet, {through: ItemsCart})
 module.exports = {
   User,
   Bracelet,
-  Cart
+  Cart,
+  ItemsCart
 }
