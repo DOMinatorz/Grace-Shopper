@@ -15,6 +15,7 @@ class AllBracelets extends Component {
   }
 
   render() {
+    // localStorage.setItem('product', 5);
     //console.log('how many times do i render')
     const bracelets = this.props.bracelets
     // console.log('this is bracelets', bracelets)

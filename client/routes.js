@@ -56,6 +56,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+      // get existing cart
     }
   }
 }
