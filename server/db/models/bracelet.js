@@ -4,18 +4,16 @@ const db = require('../db')
 const Bracelet = db.define('bracelet', {
   // add a description for the bracelet
   style: {
-    // enum: multiple options
-    // is in: seq option
-    type: Sequelize.STRING,
+    type: Sequelize.ENUM,
+    values: ['Solitary', 'Pair', 'Trio'],
     allowNull: false,
     validate: {
       notEmpty: false
     }
   },
   material: {
-    // enum: multiple options
-    // is in: seq option
-    type: Sequelize.STRING,
+    type: Sequelize.ENUM,
+    values: ['Leather', 'Suede'],
     allowNull: false,
     validate: {
       notEmpty: false
@@ -30,6 +28,20 @@ const Bracelet = db.define('bracelet', {
       notEmpty: false
     }
   },
+  // longname: {
+  //   type: Sequelize.STRING,
+  //   allowNull: false,
+  //   validate: {
+  //     notEmpty: false
+  //   }
+  // },
+  // description: {
+  //   type: Sequelize.TEXT,
+  //   allowNull: false,
+  //   validate: {
+  //     notEmpty: false
+  //   }
+  // },
   inventory: {
     // no min: you can end up with negative inventory :'(
     type: Sequelize.INTEGER,
