@@ -60,11 +60,29 @@ const createApp = () => {
       saveUninitialized: false
     })
   )
+
+  /*
+
+  req.session = {
+
+  }
+
+  */
+
   app.use(passport.initialize())
   app.use(passport.session())
 
+  // where to store cart logic
+  // how to add items to the session
   app.use((req, res, next) => {
+    // if (!req.user) { do the following... else next()
+    // add the instance of the bracelet
+    // quantity?
+    // req.session.cart = {
+    //   braceletId: quantity
+    // }
     if (!req.session.cart) req.session.cart = []
+
     // else{
     //   req.session.cart===
     // }
