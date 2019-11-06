@@ -12,7 +12,7 @@ const db = require('../db')
  */
 
 const Cart = db.define('cart', {
-  isPurchsed: {
+  isPurchased: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
