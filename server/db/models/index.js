@@ -1,5 +1,6 @@
 const User = require('./user')
 const Bracelet = require('./bracelet')
+const Cart = require('./cart')
 
 const Sequelize = require('sequelize')
 const db = require('../db')
@@ -12,27 +13,10 @@ const db = require('../db')
  */
 
 // throw this into a different file
-const Cart = db.define('cart', {
-  // going to place on your Cart table, which is NOT a join table
-  isPurchased: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
-    // would like this to NOT be null
-  },
-  price: {
-    // changing back to INT
-    type: Sequelize.DECIMAL(10, 2),
-    allowNull: true
-  },
-  // going into your JOIN table, and should also have a minimum**
-  qty: {
-    type: Sequelize.INTEGER
-  }
-})
 
-User.belongsToMany(Bracelet, {through: Cart})
-
-Bracelet.belongsToMany(User, {through: Cart})
+Cart.belongsTo(User)
+Bracelet.belongsToMany(Cart, {through: 'items_cart'})
+Cart.belongsToMany(Bracelet, {through: 'items_cart'})
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
