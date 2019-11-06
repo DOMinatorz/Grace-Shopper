@@ -37,5 +37,6 @@ Bracelet.belongsToMany(User, {through: Cart})
  */
 module.exports = {
   User,
-  Bracelet
+  Bracelet,
+  Cart
 }
