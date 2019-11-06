@@ -1,6 +1,7 @@
 const User = require('./user')
 const Bracelet = require('./bracelet')
 const Cart = require('./cart')
+const ItemsCart = require('./items-cart')
 
 const Sequelize = require('sequelize')
 const db = require('../db')
@@ -15,8 +16,8 @@ const db = require('../db')
 // throw this into a different file
 
 Cart.belongsTo(User)
-Bracelet.belongsToMany(Cart, {through: 'items_cart'})
-Cart.belongsToMany(Bracelet, {through: 'items_cart'})
+Bracelet.belongsToMany(Cart, {through: ItemsCart})
+Cart.belongsToMany(Bracelet, {through: ItemsCart})
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,

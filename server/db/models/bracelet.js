@@ -2,7 +2,6 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Bracelet = db.define('bracelet', {
-  // add a description for the bracelet
   style: {
     type: Sequelize.ENUM,
     values: ['Solitary', 'Pair', 'Trio'],
@@ -20,52 +19,57 @@ const Bracelet = db.define('bracelet', {
     }
   },
   color: {
-    // enum: multiple options
-    // is in: seq option
+    type: Sequelize.ENUM,
+    values: ['Ocean', 'Tan', 'Black', 'Cerise', 'Gray'],
+    allowNull: false,
+    validate: {
+      notEmpty: false
+    }
+  },
+  longname: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: false
     }
   },
-  // longname: {
-  //   type: Sequelize.STRING,
-  //   allowNull: false,
-  //   validate: {
-  //     notEmpty: false
-  //   }
-  // },
-  // description: {
-  //   type: Sequelize.TEXT,
-  //   allowNull: false,
-  //   validate: {
-  //     notEmpty: false
-  //   }
-  // },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+    validate: {
+      notEmpty: false
+    }
+  },
   inventory: {
-    // no min: you can end up with negative inventory :'(
     type: Sequelize.INTEGER,
-    defaultValue: 100
+    defaultValue: 0,
+    validate: {
+      min: 0
+    }
   },
   // move this quantity into a different table that will reference user's cart
   qty: {
     type: Sequelize.INTEGER,
     defaultValue: 0,
     validate: {
-      max: 25,
-      min: 0
+      min: 0,
+      max: 25
     }
   },
-  // minimum: add in a min so that you don't pay your customer $$
   price: {
     // cents -> pay in pennies
     // store our information as INTEGER
-    type: Sequelize.DECIMAL(10, 2)
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0
+    }
   },
   image: {
     // default image
     // store as assets
-    type: Sequelize.STRING
+    type: Sequelize.TEXT,
+    defaultValue:
+      'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiaypXaw9blAhUvwVkKHb7DCAkQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.davidjones.com%2Fbrand%2Fmadewell%2F22910661%2FWide-Leg-Crop-Jean-In-Pure-White.html&psig=AOvVaw02P9iYlfMrrUZH1HWLLrUT&ust=1573162111002874'
   }
 })
 
