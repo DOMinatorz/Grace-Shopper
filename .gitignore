@@ -1,7 +1,6 @@
 node_modules
 public/bundle.js
 public/bundle.js.map
-public/bracelet-pics
 secrets.js
 .DS_Store
 npm-debug.log
