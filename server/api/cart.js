@@ -45,7 +45,7 @@ router.get('/', async (req, res, next) => {
 router.post('/:id/add', async (req, res, next) => {
   try {
     // if the user already has this item in the cart, this will return a value that we can use in the findOrCreate
-    let cartId = await Cart.findAll({
+    let cartId = await Cart.findOrCreate({
       where: {
         userId: req.user.id,
         isPurchased: false
