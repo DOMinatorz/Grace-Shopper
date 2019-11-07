@@ -19,3 +19,16 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+#single-bracelet {
+  display: flex;
+  justify-content: center;
+}
+
+#bracelet-image img {
+  max-width: 50%;
+}
+
+#bracelet-details {
+  max-width: 50%;
+}

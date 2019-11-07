@@ -18,19 +18,23 @@ class SingleBracelet extends Component {
       return <div>Loading...</div>
     else
       return (
-        <div>
-          <h1>Style: {bracelet.style}</h1>
-          <h1>Material: {bracelet.material}</h1>
-          <h1>Color: {bracelet.color}</h1>
-          <h1>Price: {bracelet.price}</h1>
-          <button
-            type="submit"
-            // this may cause issues with logged in (bracelet.id) vs guest (bracelet)
-            onClick={() => this.props.addToCart(bracelet.id)}
-          >
-            Add to cart
-          </button>
-          <img src={bracelet.image} />
+        <div id="single-bracelet">
+          <div id="bracelet-image">
+            <img src={bracelet.image} />
+          </div>
+          <div id="bracelet-details">
+            <h1>Style: {bracelet.style}</h1>
+            <h1>Material: {bracelet.material}</h1>
+            <h1>Color: {bracelet.color}</h1>
+            <h1>Price: ${bracelet.price / 100}</h1>
+            <button
+              type="submit"
+              // this may cause issues with logged in (bracelet.id) vs guest (bracelet)
+              onClick={() => this.props.addToCart(bracelet.id)}
+            >
+              Add to cart
+            </button>
+          </div>
         </div>
       )
   }

@@ -33,8 +33,7 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 10000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/boDLWbr.png'
     }),
     Bracelet.create({
       style: 'Solitary',
@@ -45,8 +44,7 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 10000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/P4YtcYo.png'
     }),
     Bracelet.create({
       style: 'Solitary',
@@ -57,44 +55,40 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 10000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/IsMSZQ0.png'
     }),
     Bracelet.create({
       style: 'Solitary',
       material: 'Leather',
-      color: 'Tan',
+      color: 'Cerise',
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 10000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/boDLWbr.png'
     }),
     Bracelet.create({
       style: 'Solitary',
       material: 'Leather',
-      color: 'Tan',
+      color: 'Gray',
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 10000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/7aveEPK.png'
     }),
     Bracelet.create({
       style: 'Solitary',
       material: 'Leather',
-      color: 'Tan',
+      color: 'Cerise',
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 10000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/mNJysfA.png'
     }),
     Bracelet.create({
       style: 'Pair',
@@ -105,8 +99,7 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 20000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/boDLWbr.png'
     }),
     Bracelet.create({
       style: 'Pair',
@@ -117,8 +110,7 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 20000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/boDLWbr.png'
     }),
     Bracelet.create({
       style: 'Pair',
@@ -129,8 +121,7 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 20000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/2FlFW7G.png'
     }),
     Bracelet.create({
       style: 'Trio',
@@ -141,8 +132,7 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 30000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/boDLWbr.png'
     }),
     Bracelet.create({
       style: 'Trio',
@@ -153,8 +143,7 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 30000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/boDLWbr.png'
     }),
     Bracelet.create({
       style: 'Trio',
@@ -165,8 +154,7 @@ async function seed() {
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
       inventory: 0,
       price: 30000,
-      image:
-        'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
+      image: 'https://i.imgur.com/boDLWbr.png'
     })
   ])
 
