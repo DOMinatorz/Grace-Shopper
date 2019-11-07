@@ -12,8 +12,6 @@ import {cart, total, userCart, userTotal} from './addToCart'
 const reducer = combineReducers({
   user,
   bracelets,
-  cart,
-  total,
   userCart,
   userTotal,
   guestCart

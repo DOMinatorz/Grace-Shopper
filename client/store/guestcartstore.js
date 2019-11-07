@@ -4,11 +4,11 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-const ADD_TO_GCART = 'ADD_TO_CART'
-const REMOVE_FROM_GCART = 'REMOVE_FROM_CART'
-const INCREASE_GQTY = 'INCREASE_QTY'
-const DECREASE_GQTY = 'DECREASE_QTY'
-const GET_GUEST_GCART = 'GET_GUEST_CART'
+const ADD_TO_GCART = 'ADD_TO_GCART'
+const REMOVE_FROM_GCART = 'REMOVE_FROM_GCART'
+const INCREASE_GQTY = 'INCREASE_GQTY'
+const DECREASE_GQTY = 'DECREASE_GQTY'
+const GET_GUEST_GCART = 'GET_GUEST_GCART'
 
 /**
  * INITIAL STATE
@@ -53,29 +53,17 @@ export const decrementGQty = braceletId => ({
 // the benefit of switching to an object would be to avoid having to find the index of an existing item if the value is going to get incremented
 
 export const guestCart = (state = initialGCart, action) => {
-  let idx = null
   switch (action.type) {
     case GET_GUEST_GCART:
-      return action.cart
+      return JSON.parse(localStorage.getItem('gcart'))
     case ADD_TO_GCART:
-      if (!JSON.parse(localStorage.getItem('gcart'))[action.braceletId]) {
-        state[action.braceletId] = 0
-      }
-      state[action.braceletId] = state[action.braceletId] + 1
-      return state
+      return JSON.parse(localStorage.getItem('gcart'))
     case INCREASE_GQTY:
-      state[action.braceletId] = state[action.braceletId] + 1
-      return state
-
+      return JSON.parse(localStorage.getItem('gcart'))
     case DECREASE_GQTY:
-      state[action.braceletId] = state[action.braceletId] - 1
-      if (state[action.braceletId] === 0) {
-        delete state[action.braceletId]
-      }
-      return state
+      return JSON.parse(localStorage.getItem('gcart'))
     case REMOVE_FROM_GCART:
-      delete state[action.braceletId]
-      return state
+      return JSON.parse(localStorage.getItem('gcart'))
     default:
       return state
   }

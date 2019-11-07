@@ -6,6 +6,7 @@ import {
   decrementGQty,
   getGuestCart
 } from '../store/guestcartstore'
+import {getAllBraceletsThunk} from '../store/bracelet'
 
 export class GuestCart extends Component {
   constructor() {
@@ -14,9 +15,10 @@ export class GuestCart extends Component {
     this.decrement = this.decrement.bind(this)
     this.remove = this.remove.bind(this)
   }
-  //   componentDidMount() {
-  //     this.props.guestCart()
-  //   }
+  componentDidMount() {
+    this.props.getAllBracelets()
+    this.props.guestCart()
+  }
   increment(bracelet) {
     let cart = localStorage.getItem('gcart')
     cart = cart ? JSON.parse(cart) : {}
@@ -53,9 +55,10 @@ export class GuestCart extends Component {
     else {
       let visibleCart = this.props.bracelets.filter(bracelet => {
         return Object.keys(JSON.parse(localStorage.getItem('gcart'))).includes(
-          bracelet.id
+          String(bracelet.id)
         )
       })
+      console.log('hello', visibleCart, this.props.bracelets)
       return (
         <div>
           <h1>Your cart!</h1>
@@ -65,8 +68,15 @@ export class GuestCart extends Component {
                 <h3>Bracelet id: {bracelet.id}</h3>
                 <h3>Style: {bracelet.style}</h3>
                 <h3>Color: {bracelet.color}</h3>
-                <h3>Qty: {bracelet.qty}</h3>
-                <h3>Total: {bracelet.price / 100 * bracelet.qty}</h3>
+                <h3>
+                  Qty: {JSON.parse(localStorage.getItem('gcart'))[bracelet.id]}
+                </h3>
+                <h3>
+                  Total:{' '}
+                  {bracelet.price /
+                    100 *
+                    JSON.parse(localStorage.getItem('gcart'))[bracelet.id]}
+                </h3>
 
                 <button type="submit" onClick={() => this.increment(bracelet)}>
                   +
@@ -78,10 +88,7 @@ export class GuestCart extends Component {
 
                 <br />
 
-                <button
-                  type="submit"
-                  onClick={() => this.removeFromCart(bracelet)}
-                >
+                <button type="submit" onClick={() => this.remove(bracelet)}>
                   {' '}
                   X
                 </button>
@@ -104,7 +111,8 @@ const mapDispatchToProps = dispatch => ({
   removeFromCart: braceletid => dispatch(removeFromGCart(braceletid)),
   incrementQty: braceletid => dispatch(incrementGQty(braceletid)),
   decrementQty: braceletid => dispatch(decrementGQty(braceletid)),
-  guestCart: () => dispatch(getGuestCart())
+  guestCart: () => dispatch(getGuestCart()),
+  getAllBracelets: () => dispatch(getAllBraceletsThunk())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GuestCart)

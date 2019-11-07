@@ -17,8 +17,7 @@ class GuestSingleBracelet extends Component {
     }
     cart[bracelet.id] = cart[bracelet.id] + 1
     localStorage.setItem('gcart', JSON.stringify(cart))
-    console.log(bracelet.id)
-    this.props.addToCart(bracelet.id)
+    this.props.addToGCart(bracelet.id)
   }
 
   // there is an issue where when you navigate between bracelets the previous bracelet loads for a millisecond before changing. Thinking we can use componentWillUpdate or componentWillReceiveProps or something like that
@@ -46,7 +45,7 @@ class GuestSingleBracelet extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getSingleBracelet: id => dispatch(getSingleBraceletThunk(id)),
-  addToCart: bracelet => dispatch(addToGCart(bracelet))
+  addToGCart: bracelet => dispatch(addToGCart(bracelet))
 })
 
 const mapStateToProps = state => {
