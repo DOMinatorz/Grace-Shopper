@@ -8,6 +8,7 @@ const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const INCREASE_QTY = 'INCREASE_QTY'
 const DECREASE_QTY = 'DECREASE_QTY'
+const GET_GUEST_CART = 'GET_GUEST_CART'
 
 /**
  * INITIAL STATE
@@ -15,9 +16,18 @@ const DECREASE_QTY = 'DECREASE_QTY'
 const initialCart = []
 const initialTotal = 0
 
+//cart for guests
+localStorage.setItem('gcart', JSON.stringify({g: 1}))
+console.log(localStorage.getItem('gcart').g)
+
 /**
  * ACTION CREATORS
  */
+
+export const getGuestCart = () => ({
+  type: GET_GUEST_CART,
+  cart: localStorage.getItem('gcart')
+})
 
 export const addToCart = bracelet => ({
   type: ADD_TO_CART,
@@ -45,6 +55,8 @@ export const decrementQty = bracelet => ({
 export const cart = (state = initialCart, action) => {
   let idx = null
   switch (action.type) {
+    case GET_GUEST_CART:
+      return action.cart
     case ADD_TO_CART:
       state.forEach((bracelet, index) => {
         if (bracelet.id === action.bracelet.id) {
