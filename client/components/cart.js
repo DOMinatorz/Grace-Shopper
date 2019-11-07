@@ -16,7 +16,7 @@ export class Cart extends Component {
                 <h3>Style: {bracelet.style}</h3>
                 <h3>Color: {bracelet.color}</h3>
                 <h3>Qty: {bracelet.qty}</h3>
-                <h3>Total: {bracelet.price * bracelet.qty}</h3>
+                <h3>Total: {bracelet.price / 100 * bracelet.qty}</h3>
 
                 <button
                   type="submit"
