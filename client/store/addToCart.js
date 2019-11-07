@@ -13,7 +13,7 @@ const DECREASE_QTY = 'DECREASE_QTY'
 /**
  * INITIAL STATE
  */
-const initialCart = []
+const initialCart = {}
 const initialTotal = 0
 
 /**
@@ -74,6 +74,16 @@ export const addToCartThunk = id => async dispatch => {
   }
 }
 
+export const incrementQtyThunk = id => async dispatch => {
+  try {
+    // do i have to add another argument to my post request
+    const {data} = await axios.post(`/api/cart/${id}/add`)
+    dispatch(incrementQty(data))
+  } catch (error) {
+    console.log('there was an error in the addToCartThunk')
+  }
+}
+
 // the code below is the reducer that I think the guest cart is still using so I'm not going to delete, refactoring the reducer for loggedin Users
 
 // export const cart = (state = initialCart, action) => {
@@ -113,6 +123,7 @@ export const addToCartThunk = id => async dispatch => {
 
 export const userCart = (state = initialCart, action) => {
   // let idx = null
+
   switch (action.type) {
     case GET_CART:
       if (action.cart) {
@@ -128,23 +139,13 @@ export const userCart = (state = initialCart, action) => {
       if (action.bracelet) return action.bracelet
       else return state
 
-    // case ADD_TO_CART:
-    //   state.forEach((bracelet, index) => {
-    //     if (bracelet.id === action.bracelet.id) {
-    //       idx = index
-    //     }
-    //   })
-
-    //   if (idx || idx === 0) {
-    //     state[idx].qty = state[idx].qty + 1
-    //     return state
-    //   } else {
-    //     action.bracelet.qty++
-    //     return [...state, action.bracelet]
-    //   }
-    // case INCREASE_QTY:
-    //   action.bracelet.qty++
-    //   return state
+    case INCREASE_QTY:
+      if (action.bracelet) {
+        return {
+          ...state,
+          [action.bracelet.braceletId]: action.bracelet.qty++
+        }
+      }
 
     // case DECREASE_QTY:
     //   if (action.bracelet.qty === 1) {

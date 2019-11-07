@@ -5,7 +5,8 @@ import {
   addToCartThunk,
   removeFromCart,
   incrementQty,
-  decrementQty
+  decrementQty,
+  incrementQtyThunk
 } from '../store/addToCart'
 import {getAllBraceletsThunk} from '../store/bracelet'
 
@@ -38,7 +39,7 @@ export class Cart extends Component {
                 <h3>Style: {bracelet.style}</h3>
                 <h3>Color: {bracelet.color}</h3>
                 <h3>Qty: {bracelet.quantity}</h3>
-                <h3>Total: {bracelet.price * bracelet.quantity}</h3>
+                <h3>Total: ${bracelet.price * bracelet.quantity / 100}</h3>
 
                 <button
                   type="submit"
@@ -83,7 +84,7 @@ const mapDispatchToProps = dispatch => ({
   getAllBracelets: () => dispatch(getAllBraceletsThunk()),
   getCart: () => dispatch(getCartThunk()),
   removeFromCart: bracelet => dispatch(removeFromCart(bracelet)),
-  incrementQty: id => dispatch(addToCartThunk(id)),
+  incrementQty: id => dispatch(incrementQtyThunk(id)),
   decrementQty: bracelet => dispatch(decrementQty(bracelet))
 })
 
