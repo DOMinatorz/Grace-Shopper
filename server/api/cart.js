@@ -29,25 +29,12 @@ router.get('/', async (req, res, next) => {
     })
     cartId = cartId[0].id
 
-    let braceletIds = await ItemsCart.findAll({
+    let cart = await ItemsCart.findAll({
       where: {
         cartId: cartId
-      },
-      attributes: ['braceletId']
-    })
-
-    let arrBraceletIds = braceletIds.map(bracelet => {
-      return bracelet.braceletId
-    })
-
-    const bracelets = await Bracelet.findAll({
-      where: {
-        id: {
-          [Op.in]: arrBraceletIds
-        }
       }
     })
-    if (bracelets) res.send(bracelets)
+    if (cart) res.send(cart)
     else res.status(404).send(`404 - Can't find Your Items!`)
   } catch (err) {
     next(err)
@@ -60,13 +47,12 @@ router.post('/:id/add', async (req, res, next) => {
     // if the user already has this item in the cart, this will return a value that we can use in the findOrCreate
     let cartId = await Cart.findAll({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isPurchased: false
       },
       attributes: ['id']
     })
     cartId = cartId[0].id
-    console.log('this is cartId', cartId)
-    console.log('this is req.params.id', req.params.id)
 
     const [item, wasCreated] = await ItemsCart.findOrCreate({
       where: {
@@ -84,18 +70,18 @@ router.post('/:id/add', async (req, res, next) => {
   }
 })
 
-router.put('/:id/increase', async (req, res, next) => {
-  try {
-    const updatedPurchase = await Cart.findById(req.params.id).then(
-      bracelet => {
-        bracelet.update({quantity: bracelet.quantity + 1})
-      }
-    )
-    res.send(updatedPurchase)
-  } catch (err) {
-    next(err)
-  }
-})
+// router.put('/:id/increase', async (req, res, next) => {
+//   try {
+//     const updatedPurchase = await Cart.findById(req.params.id).then(
+//       bracelet => {
+//         bracelet.update({quantity: bracelet.quantity + 1})
+//       }
+//     )
+//     res.send(updatedPurchase)
+//   } catch (err) {
+//     next(err)
+//   }
+// })
 
 router.put('/:id/decrease', async (req, res, next) => {
   try {

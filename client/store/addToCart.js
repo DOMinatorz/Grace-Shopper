@@ -4,6 +4,7 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
+const GET_CART = 'GET_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const INCREASE_QTY = 'INCREASE_QTY'
@@ -12,14 +13,26 @@ const DECREASE_QTY = 'DECREASE_QTY'
 /**
  * INITIAL STATE
  */
-const initialCart = []
+const initialCart = {}
 const initialTotal = 0
 
 /**
  * ACTION CREATORS
  */
 
+// I would like to update thunks to only take a braceletId instead of the whole bracelet but concerned that will break the work that milo/gerard are doing for non-logged in users
+
+export const getCart = cart => ({
+  type: GET_CART,
+  cart
+})
+
 export const addToCart = bracelet => ({
+  // when a user is logged in, we are receiving 'item' this is going to be a record of the item added that has a braceletId property which we could use to look up info on the bracelet in the database and send to the front end. i.e. send the whole bracelet as opposed to just sending this weird item object
+
+  // just updated the API route to send back the bracelet object instead of the 'item' in the cart_items table
+
+  // down the line instead of passing bracelet or whole item , just pass the bracelet id qty
   type: ADD_TO_CART,
   bracelet
 })
@@ -38,47 +51,121 @@ export const decrementQty = bracelet => ({
   bracelet
 })
 
-// the below assumes that cart is an array as opposed to an object
-// the benefit of array is to keep the order that the bracelets were added to the cart
-// the benefit of switching to an object would be to avoid having to find the index of an existing item if the value is going to get incremented
+/**
+ * THUNK CREATORS
+ */
 
-export const cart = (state = initialCart, action) => {
-  let idx = null
+export const getCartThunk = () => async dispatch => {
+  try {
+    const {data} = await axios.get('/api/cart')
+    dispatch(getCart(data))
+  } catch (error) {
+    console.log('there was an error in the getCartThunk')
+  }
+}
+// do i have to add another argument to my post request
+export const addToCartThunk = id => async dispatch => {
+  try {
+    // do i have to add another argument to my post request
+    const {data} = await axios.post(`/api/cart/${id}/add`)
+    dispatch(addToCart(data))
+  } catch (error) {
+    console.log('there was an error in the addToCartThunk')
+  }
+}
+
+export const incrementQtyThunk = id => async dispatch => {
+  try {
+    // do i have to add another argument to my post request
+    const {data} = await axios.post(`/api/cart/${id}/add`)
+    dispatch(incrementQty(data))
+  } catch (error) {
+    console.log('there was an error in the addToCartThunk')
+  }
+}
+
+// the code below is the reducer that I think the guest cart is still using so I'm not going to delete, refactoring the reducer for loggedin Users
+
+// export const cart = (state = initialCart, action) => {
+//   let idx = null
+//   switch (action.type) {
+//     case ADD_TO_CART:
+//       state.forEach((bracelet, index) => {
+//         if (bracelet.id === action.bracelet.id) {
+//           idx = index
+//         }
+//       })
+
+//       if (idx || idx === 0) {
+//         state[idx].qty = state[idx].qty + 1
+//         return state
+//       } else {
+//         action.bracelet.qty++
+//         return [...state, action.bracelet]
+//       }
+//     case INCREASE_QTY:
+//       action.bracelet.qty++
+//       return state
+
+//     case DECREASE_QTY:
+//       if (action.bracelet.qty === 1) {
+//         return state.filter(bracelet => bracelet !== action.bracelet)
+//       } else action.bracelet.qty--
+//       return state
+
+//     case REMOVE_FROM_CART:
+//       return state.filter(bracelet => action.bracelet.id !== bracelet.id)
+
+//     default:
+//       return state
+//   }
+// }
+
+export const userCart = (state = initialCart, action) => {
+  // let idx = null
+
   switch (action.type) {
-    case ADD_TO_CART:
-      state.forEach((bracelet, index) => {
-        if (bracelet.id === action.bracelet.id) {
-          idx = index
+    case GET_CART:
+      if (action.cart) {
+        let cart = {}
+        for (let i = 0; i < action.cart.length; i++) {
+          let currItem = action.cart[i]
+          cart[currItem.braceletId] = currItem.qty
         }
-      })
+        return cart
+      } else return state
 
-      if (idx || idx === 0) {
-        state[idx].qty = state[idx].qty + 1
-        return state
-      } else {
-        action.bracelet.qty++
-        return [...state, action.bracelet]
-      }
+    case ADD_TO_CART:
+      if (action.bracelet) return action.bracelet
+      else return state
+
     case INCREASE_QTY:
-      action.bracelet.qty++
-      return state
+      if (action.bracelet) {
+        return {
+          ...state,
+          [action.bracelet.braceletId]: action.bracelet.qty++
+        }
+      }
 
-    case DECREASE_QTY:
-      if (action.bracelet.qty === 1) {
-        return state.filter(bracelet => bracelet !== action.bracelet)
-      } else action.bracelet.qty--
-      return state
+    // case DECREASE_QTY:
+    //   if (action.bracelet.qty === 1) {
+    //     return state.filter(bracelet => bracelet !== action.bracelet)
+    //   } else action.bracelet.qty--
+    //   return state
 
-    case REMOVE_FROM_CART:
-      return state.filter(bracelet => action.bracelet.id !== bracelet.id)
+    // case REMOVE_FROM_CART:
+    //   return state.filter(bracelet => action.bracelet.id !== bracelet.id)
 
     default:
       return state
   }
 }
 
-export const total = (state = initialTotal, action) => {
+export const userTotal = (state = initialTotal, action) => {
   switch (action.type) {
+    case GET_CART:
+      return ''
+
     case ADD_TO_CART:
       return state + Number(action.bracelet.price)
 
@@ -97,3 +184,26 @@ export const total = (state = initialTotal, action) => {
       return state
   }
 }
+
+// the code below is the reducer that I think the guest cart is still using so I'm not going to delete, refactoring the reducer for loggedin Users
+
+// export const total = (state = initialTotal, action) => {
+//   switch (action.type) {
+//     case ADD_TO_CART:
+//       return state + Number(action.bracelet.price)
+
+//     case INCREASE_QTY:
+//       return state + Number(action.bracelet.price)
+
+//     case DECREASE_QTY:
+//       if (state - Number(action.bracelet.price) <= 0) {
+//         return 0
+//       } else return state - Number(action.bracelet.price)
+
+//     case REMOVE_FROM_CART:
+//       return state - Number(action.bracelet.price * action.bracelet.qty)
+
+//     default:
+//       return state
+//   }
+// }

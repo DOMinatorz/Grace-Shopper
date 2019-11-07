@@ -54,7 +54,6 @@ export const getSingleBraceletThunk = id => async dispatch => {
 export const bracelets = (state = defaultBracelets, action) => {
   switch (action.type) {
     case GET_ALL_BRACELETS:
-      console.log('this is action.bracelets', action.bracelets)
       return action.bracelets
     case GET_SINGLE_BRACELET:
       return action.bracelet

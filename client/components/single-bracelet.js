@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getSingleBraceletThunk} from '../store/bracelet'
-import {addToCart} from '../store/addToCart'
+import {addToCart, addToCartThunk} from '../store/addToCart'
 
 class SingleBracelet extends Component {
   componentDidMount() {
@@ -23,7 +23,11 @@ class SingleBracelet extends Component {
           <h1>Material: {bracelet.material}</h1>
           <h1>Color: {bracelet.color}</h1>
           <h1>Price: {bracelet.price}</h1>
-          <button type="submit" onClick={() => this.props.addToCart(bracelet)}>
+          <button
+            type="submit"
+            // this may cause issues with logged in (bracelet.id) vs guest (bracelet)
+            onClick={() => this.props.addToCart(bracelet.id)}
+          >
             Add to cart
           </button>
           <img src={bracelet.image} />
@@ -34,7 +38,8 @@ class SingleBracelet extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getSingleBracelet: id => dispatch(getSingleBraceletThunk(id)),
-  addToCart: bracelet => dispatch(addToCart(bracelet))
+  // this may cause issues with logged in (thunk) vs guest (plain action creator)
+  addToCart: id => dispatch(addToCartThunk(id))
 })
 
 const mapStateToProps = state => {
