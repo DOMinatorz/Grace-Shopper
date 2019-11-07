@@ -21,7 +21,6 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log('this is req.user.id', req.user.id)
     let cartId = await Cart.findAll({
       where: {
         userId: req.user.id
@@ -55,14 +54,30 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+// still need to test because unable to test this using postman currently
+router.post('/:id/add', async (req, res, next) => {
   try {
-    const {id, isPurchased} = req.body
-    const newPurchase = await Cart.create({
-      id,
-      isPurchased
+    // if the user already has this item in the cart, this will return a value that we can use in the findOrCreate
+    let cartId = await Cart.findAll({
+      where: {
+        userId: req.user.id
+      },
+      attributes: ['id']
     })
-    if (newPurchase) res.send(newPurchase)
+    cartId = cartId[0].id
+    console.log('this is cartId', cartId)
+    console.log('this is req.params.id', req.params.id)
+
+    const [item, wasCreated] = await ItemsCart.findOrCreate({
+      where: {
+        cartId: cartId,
+        braceletId: req.params.id
+      }
+    })
+    item.qty++
+    item.save()
+
+    if (item) res.status(201).send(item)
     else res.status(404).send(`404 - Can't Make New Purchase`)
   } catch (err) {
     next(err)
