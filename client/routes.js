@@ -14,6 +14,7 @@ import {
 import {me} from './store'
 import SingleBracelet from './components/single-bracelet'
 import AllBracelets from './components/all-bracelets'
+import UserCheckout from './components/UserCheckout'
 
 /**
  * COMPONENT
@@ -39,6 +40,7 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
             <Route path="/account" component={AccountPage} />
             <Route path="/cart" component={Cart} />
+            <Route path="/checkout" component={UserCheckout} />
             <Route path="/bracelets/:id" component={SingleBracelet} />
           </Switch>
         ) : (
