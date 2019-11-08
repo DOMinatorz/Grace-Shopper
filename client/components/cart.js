@@ -24,9 +24,9 @@ export class Cart extends Component {
         return this.props.cart.hasOwnProperty(bracelet.id)
       })
 
-      filteredBracelets.forEach(bracelet => {
-        bracelet.quantity = this.props.cart[bracelet.id]
-      })
+      // filteredBracelets.forEach(bracelet => {
+      //   bracelet.quantity = this.props.cart[bracelet.id]
+      // })
       return (
         <div>
           <h1>Your cart!</h1>
@@ -36,8 +36,10 @@ export class Cart extends Component {
                 <h3>Bracelet id: {bracelet.id}</h3>
                 <h3>Style: {bracelet.style}</h3>
                 <h3>Color: {bracelet.color}</h3>
-                <h3>Qty: {bracelet.quantity}</h3>
-                <h3>Total: ${bracelet.price * bracelet.quantity / 100}</h3>
+                <h3>Qty: {this.props.cart[bracelet.id]}</h3>
+                <h3>
+                  Total: ${bracelet.price * this.props.cart[bracelet.id] / 100}
+                </h3>
 
                 <button
                   type="submit"
@@ -48,6 +50,11 @@ export class Cart extends Component {
 
                 <button
                   type="submit"
+                  // onClick={() =>
+                  //   this.props.cart[bracelet.id] === 1
+                  //     ? this.props.removeFromCart(bracelet.id)
+                  //     : this.props.decrementQty(bracelet.id)
+                  // }
                   onClick={() => this.props.decrementQty(bracelet.id)}
                 >
                   -

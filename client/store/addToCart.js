@@ -84,21 +84,23 @@ export const incrementQtyThunk = id => async dispatch => {
     console.log('there was an error in the incrementToCartThunk')
   }
 }
-
-export const decrementQtyThunk = id => async dispatch => {
-  try {
-    // do i have to add another argument to my post request
-    const {data} = await axios.put(`/api/cart/${id}/decrease`)
-    dispatch(decrementQty(data))
-  } catch (error) {
-    console.log('there was an error in the decrementQtyTHunk')
-  }
-}
 export const removeFromCartThunk = id => async dispatch => {
   try {
     // do i have to add another argument to my post request
     const {data} = await axios.delete(`/api/cart/${id}/delete`)
     dispatch(removeFromCart(data))
+  } catch (error) {
+    console.log('there was an error in the decrementQtyTHunk')
+  }
+}
+
+export const decrementQtyThunk = id => async dispatch => {
+  try {
+    // do i have to add another argument to my post request
+    const {data} = await axios.put(`/api/cart/${id}/decrease`)
+    if (data.qty === 0) {
+      dispatch(removeFromCartThunk(id))
+    } else dispatch(decrementQty(data))
   } catch (error) {
     console.log('there was an error in the decrementQtyTHunk')
   }
@@ -154,7 +156,11 @@ export const userCart = (state = initialCart, action) => {
       return cart
 
     case ADD_TO_CART:
-      return action.bracelet
+      let bracelet = {
+        [action.bracelet.braceletId]: action.bracelet.qty
+      }
+
+      return {...state, ...bracelet}
 
     case INCREASE_QTY:
       return {
@@ -169,10 +175,9 @@ export const userCart = (state = initialCart, action) => {
       }
 
     case REMOVE_FROM_CART:
-      console.log('this is state', state)
-      delete state[action.bracelet.braceletId]
-      console.log('this is new state', state)
-      return state
+      let newState = {...state}
+      delete newState[action.bracelet.braceletId]
+      return newState
 
     default:
       return state

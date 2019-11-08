@@ -17,7 +17,7 @@ const initialGCart = {}
 const initialTotal = 0
 
 //cart for guests
-// localStorage.setItem('gcart', JSON.stringify({g: 1}))
+localStorage.setItem('gcart', JSON.stringify({}))
 // console.log(localStorage.getItem('gcart').g)
 
 /**

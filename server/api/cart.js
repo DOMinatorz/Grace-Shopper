@@ -108,11 +108,24 @@ router.put('/:id/decrease', async (req, res, next) => {
 })
 router.delete('/:id/delete', async (req, res, next) => {
   try {
-    const singleBracelet = await Cart.findByPk(req.params.id)
+    let cartId = await Cart.findAll({
+      where: {
+        userId: req.user.id
+      },
+      attributes: ['id']
+    })
+    cartId = cartId[0].id
+
+    const singleBracelet = await ItemsCart.findOne({
+      where: {
+        cartId: cartId,
+        braceletId: req.params.id
+      }
+    })
     if (singleBracelet) {
       await singleBracelet.destroy()
       console.log('returned from destroy')
-      res.status(200).send('deleted')
+      res.status(200).send(singleBracelet)
     } else {
       res
         .status(404)
