@@ -5,7 +5,6 @@ const isAdmin = require('./utils')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
-  console.log('this is req.user', req.user)
   try {
     if (!isAdmin(req.user)) res.send('GET YO HANDS OFF OUR USERS')
     else {
