@@ -81,7 +81,28 @@ export const incrementQtyThunk = id => async dispatch => {
     const {data} = await axios.post(`/api/cart/${id}/add`)
     dispatch(incrementQty(data))
   } catch (error) {
-    console.log('there was an error in the addToCartThunk')
+    console.log('there was an error in the incrementToCartThunk')
+  }
+}
+export const removeFromCartThunk = id => async dispatch => {
+  try {
+    // do i have to add another argument to my post request
+    const {data} = await axios.delete(`/api/cart/${id}/delete`)
+    dispatch(removeFromCart(data))
+  } catch (error) {
+    console.log('there was an error in the decrementQtyTHunk')
+  }
+}
+
+export const decrementQtyThunk = id => async dispatch => {
+  try {
+    // do i have to add another argument to my post request
+    const {data} = await axios.put(`/api/cart/${id}/decrease`)
+    if (data.qty === 0) {
+      dispatch(removeFromCartThunk(id))
+    } else dispatch(decrementQty(data))
+  } catch (error) {
+    console.log('there was an error in the decrementQtyTHunk')
   }
 }
 
@@ -127,35 +148,36 @@ export const userCart = (state = initialCart, action) => {
 
   switch (action.type) {
     case GET_CART:
-      if (action.cart) {
-        let cart = {}
-        for (let i = 0; i < action.cart.length; i++) {
-          let currItem = action.cart[i]
-          cart[currItem.braceletId] = currItem.qty
-        }
-        return cart
-      } else return state
+      let cart = {}
+      for (let i = 0; i < action.cart.length; i++) {
+        let currItem = action.cart[i]
+        cart[currItem.braceletId] = currItem.qty
+      }
+      return cart
 
     case ADD_TO_CART:
-      if (action.bracelet) return action.bracelet
-      else return state
-
-    case INCREASE_QTY:
-      if (action.bracelet) {
-        return {
-          ...state,
-          [action.bracelet.braceletId]: action.bracelet.qty++
-        }
+      let bracelet = {
+        [action.bracelet.braceletId]: action.bracelet.qty
       }
 
-    // case DECREASE_QTY:
-    //   if (action.bracelet.qty === 1) {
-    //     return state.filter(bracelet => bracelet !== action.bracelet)
-    //   } else action.bracelet.qty--
-    //   return state
+      return {...state, ...bracelet}
 
-    // case REMOVE_FROM_CART:
-    //   return state.filter(bracelet => action.bracelet.id !== bracelet.id)
+    case INCREASE_QTY:
+      return {
+        ...state,
+        [action.bracelet.braceletId]: action.bracelet.qty++
+      }
+
+    case DECREASE_QTY:
+      return {
+        ...state,
+        [action.bracelet.braceletId]: action.bracelet.qty--
+      }
+
+    case REMOVE_FROM_CART:
+      let newState = {...state}
+      delete newState[action.bracelet.braceletId]
+      return newState
 
     default:
       return state

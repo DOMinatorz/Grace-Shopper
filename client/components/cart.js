@@ -3,9 +3,8 @@ import {connect} from 'react-redux'
 import {
   getCartThunk,
   addToCartThunk,
-  removeFromCart,
-  incrementQty,
-  decrementQty,
+  removeFromCartThunk,
+  decrementQtyThunk,
   incrementQtyThunk
 } from '../store/addToCart'
 import {getAllBraceletsThunk} from '../store/bracelet'
@@ -18,17 +17,16 @@ export class Cart extends Component {
   }
 
   render() {
-    if (this.props.cart.length === 0) return <div>Your Cart is Empty</div>
+    if (!Object.keys(this.props.cart).length)
+      return <div>Your Cart is Empty</div>
     else {
       let filteredBracelets = this.props.bracelets.filter(bracelet => {
         return this.props.cart.hasOwnProperty(bracelet.id)
       })
-      console.log('this is filteredBtrc', filteredBracelets)
 
-      filteredBracelets.forEach(bracelet => {
-        bracelet.quantity = this.props.cart[bracelet.id]
-      })
-      console.log('this is new filteredBrc', filteredBracelets)
+      // filteredBracelets.forEach(bracelet => {
+      //   bracelet.quantity = this.props.cart[bracelet.id]
+      // })
       return (
         <div>
           <h1>Your cart!</h1>
@@ -38,8 +36,10 @@ export class Cart extends Component {
                 <h3>Bracelet id: {bracelet.id}</h3>
                 <h3>Style: {bracelet.style}</h3>
                 <h3>Color: {bracelet.color}</h3>
-                <h3>Qty: {bracelet.quantity}</h3>
-                <h3>Total: ${bracelet.price * bracelet.quantity / 100}</h3>
+                <h3>Qty: {this.props.cart[bracelet.id]}</h3>
+                <h3>
+                  Total: ${bracelet.price * this.props.cart[bracelet.id] / 100}
+                </h3>
 
                 <button
                   type="submit"
@@ -50,14 +50,19 @@ export class Cart extends Component {
 
                 <button
                   type="submit"
-                  onClick={() => this.props.decrementQty(bracelet)}
+                  // onClick={() =>
+                  //   this.props.cart[bracelet.id] === 1
+                  //     ? this.props.removeFromCart(bracelet.id)
+                  //     : this.props.decrementQty(bracelet.id)
+                  // }
+                  onClick={() => this.props.decrementQty(bracelet.id)}
                 >
                   -
                 </button>
                 <br />
                 <button
                   type="submit"
-                  onClick={() => this.props.removeFromCart(bracelet)}
+                  onClick={() => this.props.removeFromCart(bracelet.id)}
                 >
                   {' '}
                   X
@@ -83,9 +88,9 @@ const mapStateToProps = state =>
 const mapDispatchToProps = dispatch => ({
   getAllBracelets: () => dispatch(getAllBraceletsThunk()),
   getCart: () => dispatch(getCartThunk()),
-  removeFromCart: bracelet => dispatch(removeFromCart(bracelet)),
+  removeFromCart: id => dispatch(removeFromCartThunk(id)),
   incrementQty: id => dispatch(incrementQtyThunk(id)),
-  decrementQty: bracelet => dispatch(decrementQty(bracelet))
+  decrementQty: id => dispatch(decrementQtyThunk(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

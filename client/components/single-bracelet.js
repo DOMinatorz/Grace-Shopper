@@ -22,7 +22,7 @@ class SingleBracelet extends Component {
           <h1>Style: {bracelet.style}</h1>
           <h1>Material: {bracelet.material}</h1>
           <h1>Color: {bracelet.color}</h1>
-          <h1>Price: {bracelet.price}</h1>
+          <h1>Price: ${bracelet.price / 100}</h1>
           <button
             type="submit"
             // this may cause issues with logged in (bracelet.id) vs guest (bracelet)
