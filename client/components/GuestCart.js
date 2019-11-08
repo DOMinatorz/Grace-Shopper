@@ -37,6 +37,9 @@ export class GuestCart extends Component {
       cart[bracelet.id] = 0
     }
     cart[bracelet.id] = cart[bracelet.id] - 1
+    if (cart[bracelet.id] < 1) {
+      delete cart[bracelet.id]
+    }
     localStorage.setItem('gcart', JSON.stringify(cart))
     this.props.decrementQty(bracelet.id)
   }
