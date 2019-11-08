@@ -16,7 +16,7 @@ function isUser(req, res, next) {
 }
 
 // block user routes
-router.use('/users', isUser, require('./users'))
+router.use('/users', require('./users'))
 // this is fine for everyone to see
 router.use('/bracelets', require('./bracelets'))
 // must block cart -> allow only the user to see their own cart
