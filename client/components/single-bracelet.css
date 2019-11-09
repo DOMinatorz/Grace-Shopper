@@ -1,12 +1,29 @@
-#main {
-  background-color: red;
+img,
+media {
+  max-width: 100%;
 }
-
+* {
+  box-sizing: border-box;
+}
 #single-bracelet {
-  /* display: flex; */
+  display: flex;
   flex-wrap: wrap;
   flex-basis: 10%;
   box-shadow: 0 0 0.625rem 0.25rem #555;
   margin: auto;
   width: 450px;
+}
+#mtv {
+  background-color: red;
+}
+h1 {
+  color: red;
+}
+
+#red {
+  color: tomato;
+}
+
+button {
+  color: red;
 }
