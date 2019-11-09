@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getSingleBraceletThunk} from '../store/bracelet'
 import {addToCart, addToCartThunk} from '../store/addToCart'
+import './single-bracelet.css'
 
 class SingleBracelet extends Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class SingleBracelet extends Component {
       return <div>Loading...</div>
     else
       return (
-        <div>
+        <div id="main">
           <h1>Style: {bracelet.style}</h1>
           <h1>Material: {bracelet.material}</h1>
           <h1>Color: {bracelet.color}</h1>
@@ -30,7 +31,7 @@ class SingleBracelet extends Component {
           >
             Add to cart
           </button>
-          <img src={bracelet.image} />
+          <img id="single-bracelet" src={bracelet.image} />
         </div>
       )
   }
