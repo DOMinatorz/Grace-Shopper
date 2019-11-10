@@ -31,7 +31,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 100,
       price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -43,7 +43,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 100,
       price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -67,7 +67,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 100,
       price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -79,7 +79,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 100,
       price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -91,7 +91,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 50,
       price: 10000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -103,7 +103,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 50,
       price: 20000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -115,7 +115,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 50,
       price: 20000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -127,7 +127,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 50,
       price: 20000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -139,7 +139,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 50,
       price: 30000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -151,7 +151,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 50,
       price: 30000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'
@@ -163,7 +163,7 @@ async function seed() {
       longname: 'Solitary in Black Pebbled Leather and Iridescent Silver',
       description:
         'Single row leather bracelet with acrylic studs and metal hardware...etc.',
-      inventory: 0,
+      inventory: 50,
       price: 30000,
       image:
         'https://images.selfridges.com/is/image/selfridges/852-10134-B6035500_M?$PDP_M_ZOOM$'

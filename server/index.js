@@ -72,23 +72,23 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  // where to store cart logic
-  // how to add items to the session
-  app.use((req, res, next) => {
-    // if (!req.user) { do the following... else next()
-    // add the instance of the bracelet
-    // quantity?
-    // req.session.cart = {
-    //   braceletId: quantity
-    // }
-    if (!req.session.cart) req.session.cart = []
+  // // where to store cart logic
+  // // how to add items to the session
+  // app.use((req, res, next) => {
+  //   // if (!req.user) { do the following... else next()
+  //   // add the instance of the bracelet
+  //   // quantity?
+  //   // req.session.cart = {
+  //   //   braceletId: quantity
+  //   // }
+  //   if (!req.session.cart) req.session.cart = []
 
-    // else{
-    //   req.session.cart===
-    // }
-    console.log('cart', req.session) // increment THEN log
-    next() // needed to continue through express middleware
-  })
+  //   // else{
+  //   //   req.session.cart===
+  //   // }
+  //   console.log('server/index this needs to be removed', req.session) // increment THEN log
+  //   next() // needed to continue through express middleware
+  // })
 
   // auth and api routes
   app.use('/auth', require('./auth'))

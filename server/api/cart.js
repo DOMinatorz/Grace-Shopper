@@ -23,7 +23,8 @@ router.get('/', async (req, res, next) => {
   try {
     let cartId = await Cart.findAll({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isPurchased: false
       },
       attributes: ['id']
     })
