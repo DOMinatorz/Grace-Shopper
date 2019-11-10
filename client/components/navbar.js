@@ -6,11 +6,12 @@ import {logout} from '../store'
 import './navbar.css'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
+  <div className="pos">
     <h1>Bracelets Store</h1>
-    <nav className="slidemenu">
+    <nav>
       {isLoggedIn ? (
         <div>
+          {/* The navbar will show these links after you log in */}
           <Link to="/home">
             <a href="#" className="btn">
               Home
@@ -29,13 +30,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <a href="#" className="btn" onClick={handleClick}>
             Logout
           </a>
-          {/* The navbar will show these links after you log in */}
-
-          {/* <a href="#" onClick={handleClick}><label htmlFor="slide-item-4"><p className="icon">✎</p><span>Logout</span></label></a> */}
-
-          {/* <a href="#" onClick={handleClick}>
-            Logout
-          </a> */}
         </div>
       ) : (
         <div>
@@ -45,9 +39,14 @@ const Navbar = ({handleClick, isLoggedIn}) => (
               Home
             </a>
           </Link>
-          <Link to="/account">
+          <Link to="/login">
             <a href="#" className="btn">
-              Account
+              Login
+            </a>
+          </Link>
+          <Link to="/signup">
+            <a href="#" className="btn">
+              SignUp
             </a>
           </Link>
           <Link to="/cart">
@@ -55,25 +54,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
               Cart
             </a>
           </Link>
-          <Link to="/cart">
-            <a href="#" className="btn">
-              Contact
-            </a>
-          </Link>
-
-          <input
-            type="radio"
-            name="slideItem"
-            id="slide-item-4"
-            className="slide-toggle"
-          />
-          <Link to="/cart">
-            <label htmlFor="slide-item-4">
-              <p className="icon">✎</p>
-              <span>Logout</span>
-            </label>
-          </Link>
-          {/* <Link to="/cart">Cart</Link> */}
         </div>
       )}
     </nav>

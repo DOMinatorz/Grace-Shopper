@@ -7,8 +7,9 @@
 }
 
 body {
-  background: #1b1b2b;
-  padding: 75px;
+  background: whitesmoke;
+  padding: 0px;
+  margin-top: 150px;
   text-align: center;
   font-family: 'Oswald', sans-serif;
 }
@@ -19,7 +20,7 @@ h1 {
 }
 
 .btn {
-  color: #999;
+  color: whitesmoke;
   background: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
   font-size: 12px;
@@ -48,4 +49,17 @@ h1 {
   width: 210px;
   margin: auto;
   margin-top: 400px;
+}
+
+.pos {
+  position: fixed;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 450px;
+  margin-top: -150px;
+}
+
+hr {
+  margin-top: 20px;
 }
