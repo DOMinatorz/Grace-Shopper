@@ -1,3 +1,6 @@
+/* Not using this component but keeping for now because of tests, don't want to delete
+test page incase we need to reference it for writing additional tests */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
