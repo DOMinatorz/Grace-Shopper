@@ -19,8 +19,14 @@ class SingleBracelet extends Component {
       return <div>Loading...</div>
     else
       return (
-        <div id="red">
-          <div className="short">
+        <div className="bracelet-page">
+          <div className="container">
+            <div className="item">
+              <img id="single-bracelet-image" src={bracelet.image} />
+            </div>
+          </div>
+
+          <div className="short-description">
             <span>Style: {bracelet.style}</span>
             <br />
             <span>Material: {bracelet.material}</span>
@@ -29,29 +35,31 @@ class SingleBracelet extends Component {
             <br />
             <span>Price: ${bracelet.price / 100}.00</span>
             <div>
-              <button
-                type="submit"
-                // this may cause issues with logged in (bracelet.id) vs guest (bracelet)
+              <a
                 onClick={() => this.props.addToCart(bracelet.id)}
-              >
-                Add to cart
-              </button>
+                className="addtocart"
+                href={
+                  // eslint-disable-next-line no-script-url
+                  'javascript:if (typeof qty == "undefined") {qty = 0}; document.getElementsByClassName("qty")[0].innerHTML = ++qty;'
+                }
+              />
+              <span className="qty">0</span>
             </div>
+            <div className="description">{bracelet.description}</div>
           </div>
 
-          <div className="container">
+          {/* <div className="container">
             <div className="item">
               <img id="single-bracelet" src={bracelet.image} />
             </div>
-          </div>
+          </div> */}
 
-          <div className="description">{bracelet.description}</div>
           {/* <div className="hidden">
-  Hi, I'm hidden. Notice that all of my styling is hidden as well, and that I still take up space, even though you can't see me.
-  <div className="visible">
-    Howdy, my parent element is hidden, but I'm still visible. <br></br>Hover over me to make my parent visible.
-  </div>
-</div> */}
+          Hi, I'm hidden. Notice that all of my styling is hidden as well, and that I still take up space, even though you can't see me.
+          <div className="visible">
+           Howdy, my parent element is hidden, but I'm still visible. <br></br>Hover over me to make my parent visible.
+          </div>
+                </div> */}
         </div>
       )
   }

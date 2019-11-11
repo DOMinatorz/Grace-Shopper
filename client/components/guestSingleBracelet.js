@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getSingleBraceletThunk} from '../store/bracelet'
 import {addToGCart} from '../store/guestcartstore'
+import './single-bracelet.css'
 
 class GuestSingleBracelet extends Component {
   componentDidMount() {
@@ -29,15 +30,47 @@ class GuestSingleBracelet extends Component {
       return <div>Loading...</div>
     else
       return (
-        <div>
-          <h1>Style: {bracelet.style}</h1>
-          <h1>Material: {bracelet.material}</h1>
-          <h1>Color: {bracelet.color}</h1>
-          <h1>Price: {bracelet.price / 100}</h1>
-          <button type="submit" onClick={() => this.increment(bracelet)}>
-            Add to cart
-          </button>
-          <img src={bracelet.image} />
+        <div className="bracelet-page">
+          <div className="container">
+            <div className="item">
+              <img id="single-bracelet-image" src={bracelet.image} />
+            </div>
+          </div>
+
+          <div className="short-description">
+            <span>Style: {bracelet.style}</span>
+            <br />
+            <span>Material: {bracelet.material}</span>
+            <br />
+            <span>Color: {bracelet.color}</span>
+            <br />
+            <span>Price: ${bracelet.price / 100}.00</span>
+            <div>
+              <a
+                onClick={() => this.props.addToCart(bracelet.id)}
+                className="addtocart"
+                href={
+                  // eslint-disable-next-line no-script-url
+                  'javascript:if (typeof qty == "undefined") {qty = 0}; document.getElementsByClassName("qty")[0].innerHTML = ++qty;'
+                }
+              />
+              <span className="qty">0</span>
+            </div>
+            <div className="description">{bracelet.description}</div>
+          </div>
+
+          {/* <div className="container">
+            <div className="item">
+              <img id="single-bracelet" src={bracelet.image} />
+            </div>
+          </div> */}
+
+          {/* <div className="hidden">
+          Hi, I'm hidden. Notice that all of my styling is hidden as well, and that I still take up space, even though you can't see me.
+          <div className="visible">
+           Howdy, my parent element is hidden, but I'm still visible. <br></br>Hover over me to make my parent visible.
+          </div>
+                </div> */}
         </div>
       )
   }

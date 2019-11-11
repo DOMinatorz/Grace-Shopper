@@ -20,3 +20,8 @@ media {
   margin: 14px;
   border: 3px solid bisque;
 }
+
+#banner {
+  width: 500px;
+  height: 450px;
+}
