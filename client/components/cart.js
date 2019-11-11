@@ -19,6 +19,7 @@ export class Cart extends Component {
   }
 
   render() {
+    console.log('*****************', this.props.cart)
     if (!Object.keys(this.props.cart).length)
       return <div>Your Cart is Empty</div>
     else {

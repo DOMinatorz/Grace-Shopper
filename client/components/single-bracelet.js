@@ -1,12 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getSingleBraceletThunk} from '../store/bracelet'
-import {addToCart, addToCartThunk} from '../store/addToCart'
+import {
+  addToCart,
+  addToCartThunk,
+  incrementQtyThunk,
+  getCartThunk
+} from '../store/addToCart'
 import './single-bracelet.css'
 
 class SingleBracelet extends Component {
   componentDidMount() {
     const id = Number(this.props.match.params.id)
+    this.props.getCart()
     this.props.getSingleBracelet(id)
   }
 
@@ -38,12 +44,12 @@ class SingleBracelet extends Component {
               <a
                 onClick={() => this.props.addToCart(bracelet.id)}
                 className="addtocart"
-                href={
-                  // eslint-disable-next-line no-script-url
-                  'javascript:if (typeof qty == "undefined") {qty = 0}; document.getElementsByClassName("qty")[0].innerHTML = ++qty;'
-                }
               />
-              <span className="qty">0</span>
+              <span className="qty">
+                {this.props.cart === undefined
+                  ? 0
+                  : this.props.cart[bracelet.id]}
+              </span>
             </div>
             <div className="description">{bracelet.description}</div>
           </div>
@@ -55,12 +61,15 @@ class SingleBracelet extends Component {
 const mapDispatchToProps = dispatch => ({
   getSingleBracelet: id => dispatch(getSingleBraceletThunk(id)),
   // this may cause issues with logged in (thunk) vs guest (plain action creator)
-  addToCart: id => dispatch(addToCartThunk(id))
+  addToCart: id => dispatch(addToCartThunk(id)),
+  incrementQty: id => dispatch(incrementQtyThunk(id)),
+  getCart: () => dispatch(getCartThunk())
 })
 
 const mapStateToProps = state => {
   return {
-    bracelet: state.bracelets
+    bracelet: state.bracelets,
+    cart: state.userCart
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SingleBracelet)
