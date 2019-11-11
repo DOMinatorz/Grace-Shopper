@@ -9,7 +9,6 @@ import {
 } from '../store/addToCart'
 import {getAllBraceletsThunk} from '../store/bracelet'
 import {Button} from 'react-bootstrap'
-import Emoji from 'react-emoji-render'
 
 export class Cart extends Component {
   componentDidMount() {
@@ -31,7 +30,7 @@ export class Cart extends Component {
       // })
       return (
         <div>
-          <h1>Your cart! 🛒 '💼'{'\u2728'}</h1>
+          <h1>Your cart! 🛒</h1>
 
           {filteredBracelets.map(bracelet => {
             return (

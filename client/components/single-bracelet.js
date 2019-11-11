@@ -47,19 +47,6 @@ class SingleBracelet extends Component {
             </div>
             <div className="description">{bracelet.description}</div>
           </div>
-
-          {/* <div className="container">
-            <div className="item">
-              <img id="single-bracelet" src={bracelet.image} />
-            </div>
-          </div> */}
-
-          {/* <div className="hidden">
-          Hi, I'm hidden. Notice that all of my styling is hidden as well, and that I still take up space, even though you can't see me.
-          <div className="visible">
-           Howdy, my parent element is hidden, but I'm still visible. <br></br>Hover over me to make my parent visible.
-          </div>
-                </div> */}
         </div>
       )
   }

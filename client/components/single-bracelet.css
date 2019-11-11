@@ -4,8 +4,6 @@
 }
 
 #single-bracelet-image {
-  /* display: flex; */
-  /* flex-direction: column; */
   box-shadow: 0 0 0.625rem 0.25rem #555;
   margin: auto;
   width: 350px;
@@ -16,13 +14,9 @@
   text-align: justify;
   width: 500px;
   padding: 20px;
-  /* background-color: rgba(111,41,97,.3);
-  border: 2px solid rgba(111,41,97,.5); */
   display: inline-block;
   vertical-align: middle;
   margin-left: 70px;
-
-  /* justify-content: center; */
   margin-top: 50px;
   margin-right: 0px;
   color: black;
@@ -34,8 +28,6 @@
   flex-wrap: wrap;
   max-width: 500px;
   text-align: left;
-  /* margin-left: 700px;
-  margin-top: -250px; */
   margin-left: 0px;
   margin-top: 0px;
 }
@@ -61,14 +53,11 @@
   margin-top: 0px;
   width: 500px;
   height: 320px;
-  /* overflow: hidden; */
 }
 
 .item {
   display: flex;
   flex-direction: initial;
-
-  /* position: absolute; */
   top: 0px;
   left: 0;
 }

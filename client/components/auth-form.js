@@ -9,7 +9,6 @@ import './auth-form.css'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log('-------------', name)
 
   return (
     <div>

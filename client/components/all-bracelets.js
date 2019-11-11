@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {getAllBraceletsThunk} from '../store/bracelet'
 import {Link} from 'react-router-dom'
 import './all-bracelets.css'
-// import law from './law.jpg'
 
 class AllBracelets extends Component {
   // constructor () {
@@ -37,7 +36,6 @@ class AllBracelets extends Component {
                 >
                   <Link to={`/bracelets/${bracelet.id}`}>
                     <img src={bracelet.image} />
-                    {/* Bracelet {bracelet.id} */}
                   </Link>
                 </div>
               )

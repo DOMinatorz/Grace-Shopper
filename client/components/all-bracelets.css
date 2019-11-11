@@ -12,8 +12,6 @@ media {
 }
 
 .shop-item {
-  /* margin: 2rem auto;
-    max-width: 21.625rem; */
   border: 0.0625rem solid #555;
   box-shadow: 0 0 0.625rem 0.25rem #555;
   flex-basis: 23%;

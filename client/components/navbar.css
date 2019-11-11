@@ -52,14 +52,10 @@ h1 {
 }
 
 .pos {
-  /* position: fixed; */
-  /* flex-direction: column; */
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  /* position: fixed; */
-  /* margin-left: 450px; */
   margin-top: -150px;
 }
 
