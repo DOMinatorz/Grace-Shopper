@@ -59,7 +59,7 @@ export const checkoutThunk = () => async dispatch => {
 
 export const guestCheckoutThunk = cart => async dispatch => {
   try {
-    await axios.put(`/api/checkout/`, JSON.stringify(cart))
+    await axios.put(`/api/checkout/guest`, cart)
     dispatch(getAllBraceletsThunk)
   } catch (error) {
     console.error('there was an error in the checkoutThunk', error)
