@@ -5,7 +5,6 @@ import {getAllBraceletsThunk, guestCheckoutThunk} from '../store/bracelet'
 export class GuestCheckout extends Component {
   componentDidMount() {
     this.props.getAllBracelets()
-    console.log('hello')
   }
   checkout() {
     let gCart = JSON.parse(localStorage.getItem('gcart'))

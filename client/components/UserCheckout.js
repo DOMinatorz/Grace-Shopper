@@ -7,7 +7,6 @@ export class UserCheckout extends Component {
   componentDidMount() {
     this.props.getAllBracelets()
     this.props.getCart()
-    console.log('hello')
   }
   checkout() {
     this.props.checkoutThunk()

@@ -12,8 +12,6 @@ import {Button} from 'react-bootstrap'
 
 export class Cart extends Component {
   componentDidMount() {
-    console.log(this.props)
-    // if the user is logged in, we do this below
     this.props.getAllBracelets()
     this.props.getCart()
   }
@@ -26,9 +24,6 @@ export class Cart extends Component {
         return this.props.cart.hasOwnProperty(bracelet.id)
       })
 
-      // filteredBracelets.forEach(bracelet => {
-      //   bracelet.quantity = this.props.cart[bracelet.id]
-      // })
       return (
         <div>
           <h1>Your cart! 🛒</h1>
@@ -56,11 +51,6 @@ export class Cart extends Component {
 
                   <Button
                     type="submit"
-                    // onClick={() =>
-                    //   this.props.cart[bracelet.id] === 1
-                    //     ? this.props.removeFromCart(bracelet.id)
-                    //     : this.props.decrementQty(bracelet.id)
-                    // }
                     onClick={() => this.props.decrementQty(bracelet.id)}
                   >
                     -
@@ -88,14 +78,11 @@ export class Cart extends Component {
   }
 }
 
-const mapStateToProps = state =>
-  // we should do some login in here to be like, if user is logged in, then cart is state.cart, otherwise, cart is state.userCart
-
-  ({
-    bracelets: state.bracelets,
-    cart: state.userCart,
-    total: state.userTotal
-  })
+const mapStateToProps = state => ({
+  bracelets: state.bracelets,
+  cart: state.userCart,
+  total: state.userTotal
+})
 
 const mapDispatchToProps = dispatch => ({
   getAllBracelets: () => dispatch(getAllBraceletsThunk()),

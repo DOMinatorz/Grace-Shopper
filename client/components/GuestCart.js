@@ -62,7 +62,6 @@ export class GuestCart extends Component {
           String(bracelet.id)
         )
       })
-      console.log('hello', visibleCart)
       return (
         <div>
           <h1>Your cart!</h1>

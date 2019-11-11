@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const {Cart, ItemsCart, Bracelet} = require('../db/models')
-// const {Op} = require('sequelize')
 module.exports = router
 
 // BEFORE THIS WE NEED TO CHECK FOR PAYMENT
@@ -46,7 +45,6 @@ router.put('/:guestcart', async (req, res, next) => {
     let cart = JSON.parse(req.params.guestcart)
     let braceletIds = Object.keys(cart)
     let itemCart = []
-    // console.log('braceletIds', braceletIds)
     for (let i = 0; i < braceletIds.length; i++) {
       itemCart.push({braceletId: braceletIds[i], qty: cart[braceletIds[i]]})
     }
@@ -54,8 +52,6 @@ router.put('/:guestcart', async (req, res, next) => {
       let currBraceletId = itemCart[i].braceletId
       let currBracelet = await Bracelet.findByPk(currBraceletId)
       currBracelet.inventory = currBracelet.inventory - itemCart[i].qty
-      // itemCart[i].price = currBracelet.price
-      // will eventually need ^ to make the order history a thing
       currBracelet.save()
     }
     res.sendStatus(200)

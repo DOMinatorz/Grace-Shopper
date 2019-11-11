@@ -20,7 +20,6 @@ const initialTotal = 0
 if (!JSON.parse(localStorage.getItem('gcart'))) {
   localStorage.setItem('gcart', JSON.stringify({}))
 }
-// console.log(localStorage.getItem('gcart').g)
 
 /**
  * ACTION CREATORS
@@ -49,10 +48,6 @@ export const decrementGQty = braceletId => ({
   type: DECREASE_GQTY,
   braceletId
 })
-
-// the below assumes that cart is an array as opposed to an object
-// the benefit of array is to keep the order that the bracelets were added to the cart
-// the benefit of switching to an object would be to avoid having to find the index of an existing item if the value is going to get incremented
 
 export const guestCart = (state = initialGCart, action) => {
   switch (action.type) {
