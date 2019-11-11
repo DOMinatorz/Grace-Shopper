@@ -46,7 +46,7 @@ class GuestSingleBracelet extends Component {
             <span>Price: ${bracelet.price / 100}.00</span>
             <div>
               <a
-                onClick={() => this.props.addToCart(bracelet.id)}
+                onClick={() => this.props.addToGCart(bracelet.id)}
                 className="addtocart"
                 href={
                   // eslint-disable-next-line no-script-url
