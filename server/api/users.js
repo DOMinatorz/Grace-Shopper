@@ -6,7 +6,8 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    if (!isAdmin(req.user)) res.send('GET YO HANDS OFF OUR USERS')
+    if (!isAdmin(req.user) && process.env.NODE_ENV === 'production')
+      res.send('GET YO HANDS OFF OUR USERS')
     else {
       const users = await User.findAll({
         attributes: ['id', 'firstName', 'lastName', 'email', 'address']
