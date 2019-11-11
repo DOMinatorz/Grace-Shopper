@@ -1,9 +1,6 @@
 const router = require('express').Router()
 module.exports = router
 
-// any PUT POST DELETE -> protect these as well.
-// gatekeeper middleware
-
 function isUser(req, res, next) {
   if (process.env.NODE_ENV !== 'test') {
     if (!req.user) {
@@ -16,7 +13,7 @@ function isUser(req, res, next) {
 
 router.use('/users', require('./users'))
 router.use('/bracelets', require('./bracelets'))
-router.use('/cart', require('./cart'))
+router.use('/cart', isUser, require('./cart'))
 
 router.use('/checkout', require('./checkout'))
 

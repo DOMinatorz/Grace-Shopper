@@ -35,7 +35,7 @@ export const getAllBraceletsThunk = () => async dispatch => {
     const {data} = await axios.get('/api/bracelets')
     dispatch(getAllBracelets(data))
   } catch (error) {
-    console.log('there was an error in the getAllBraceletsThunk')
+    console.error('there was an error in the getAllBraceletsThunk', error)
   }
 }
 
@@ -44,17 +44,16 @@ export const getSingleBraceletThunk = id => async dispatch => {
     const {data} = await axios.get(`/api/bracelets/${id}`)
     dispatch(getSingleBracelet(data))
   } catch (error) {
-    console.log('there was an error in the getSingleBraceletThunk')
+    console.error('there was an error in the getSingleBraceletThunk', error)
   }
 }
 
-//mostly working, for some reason won't dispatch the getCartThunk
 export const checkoutThunk = () => async dispatch => {
   try {
     await axios.put(`/api/checkout`)
     dispatch(getAllBraceletsThunk)
   } catch (error) {
-    console.log('there was an error in the checkoutThunk')
+    console.error('there was an error in the checkoutThunk', error)
   }
 }
 
@@ -63,7 +62,7 @@ export const guestCheckoutThunk = cart => async dispatch => {
     await axios.put(`/api/checkout/guest`, cart)
     dispatch(getAllBraceletsThunk)
   } catch (error) {
-    console.log('there was an error in the checkoutThunk')
+    console.error('there was an error in the checkoutThunk', error)
   }
 }
 

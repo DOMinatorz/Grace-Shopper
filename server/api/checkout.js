@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const {Cart, ItemsCart, Bracelet} = require('../db/models')
-// const {Op} = require('sequelize')
 module.exports = router
 
 // BEFORE THIS WE NEED TO CHECK FOR PAYMENT

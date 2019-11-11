@@ -13,8 +13,6 @@ const db = require('../db')
  *    BlogPost.belongsTo(User)
  */
 
-// throw this into a different file
-
 Cart.belongsTo(User)
 Bracelet.belongsToMany(Cart, {through: ItemsCart})
 Cart.belongsToMany(Bracelet, {through: ItemsCart})

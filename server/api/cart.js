@@ -19,6 +19,8 @@ module.exports = router
 //   }
 // })
 
+// gatekeeper function to check if user is logged in
+
 router.get('/', async (req, res, next) => {
   try {
     let cartId = await Cart.findAll({
