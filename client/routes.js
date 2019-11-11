@@ -15,6 +15,7 @@ import {me} from './store'
 import SingleBracelet from './components/single-bracelet'
 import AllBracelets from './components/all-bracelets'
 import UserCheckout from './components/UserCheckout'
+import GuestCheckout from './components/GuestCheckout'
 
 /**
  * COMPONENT
@@ -47,6 +48,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/cart" component={GuestCart} />
             <Route path="/bracelets/:id" component={GuestSingleBracelet} />
+            <Route path="/guestcheckout" component={GuestCheckout} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

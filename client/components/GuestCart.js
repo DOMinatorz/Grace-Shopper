@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {
   removeFromGCart,
   incrementGQty,
@@ -61,7 +62,7 @@ export class GuestCart extends Component {
           String(bracelet.id)
         )
       })
-      console.log('hello', visibleCart, this.props.bracelets)
+      console.log('hello', visibleCart)
       return (
         <div>
           <h1>Your cart!</h1>
@@ -98,6 +99,9 @@ export class GuestCart extends Component {
               </div>
             )
           })}
+          <Link to="/guestcheckout">
+            <button type="button">Go To Checkout</button>
+          </Link>
         </div>
       )
     }
