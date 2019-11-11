@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {clearCart} from './addToCart'
 
 /**
  * ACTION TYPES
@@ -44,6 +45,26 @@ export const getSingleBraceletThunk = id => async dispatch => {
     dispatch(getSingleBracelet(data))
   } catch (error) {
     console.log('there was an error in the getSingleBraceletThunk')
+  }
+}
+
+//mostly working, for some reason won't dispatch the getCartThunk
+export const checkoutThunk = () => async dispatch => {
+  try {
+    console.log('I HIT THE THUNK!!!!!!!!!!!')
+    await axios.put(`/api/checkout`)
+    dispatch(getAllBraceletsThunk)
+  } catch (error) {
+    console.log('there was an error in the checkoutThunk')
+  }
+}
+
+export const guestCheckoutThunk = cart => async dispatch => {
+  try {
+    await axios.put(`/api/checkout/${JSON.stringify(cart)}`)
+    dispatch(getAllBraceletsThunk)
+  } catch (error) {
+    console.log('there was an error in the checkoutThunk')
   }
 }
 

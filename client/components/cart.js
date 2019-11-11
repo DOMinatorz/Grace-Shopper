@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {
   getCartThunk,
-  addToCartThunk,
   removeFromCartThunk,
   decrementQtyThunk,
   incrementQtyThunk
@@ -12,6 +12,7 @@ import {Button} from 'react-bootstrap'
 
 export class Cart extends Component {
   componentDidMount() {
+    console.log(this.props)
     // if the user is logged in, we do this below
     this.props.getAllBracelets()
     this.props.getCart()
@@ -72,6 +73,9 @@ export class Cart extends Component {
               </div>
             )
           })}
+          <Link to="/checkout">
+            <button type="button">Go To Checkout</button>
+          </Link>
         </div>
       )
     }

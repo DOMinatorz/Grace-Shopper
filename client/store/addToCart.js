@@ -10,6 +10,7 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const INCREASE_QTY = 'INCREASE_QTY'
 const DECREASE_QTY = 'DECREASE_QTY'
 const GET_GUEST_CART = 'GET_GUEST_CART'
+const CLEAR_CART = 'CLEAR_CART'
 
 /**
  * INITIAL STATE
@@ -26,6 +27,11 @@ const initialTotal = 0
 export const getCart = cart => ({
   type: GET_CART,
   cart
+})
+
+export const clearCart = () => ({
+  type: GET_CART,
+  cart: {}
 })
 
 export const addToCart = bracelet => ({
