@@ -28,7 +28,6 @@ router.get('/', async (req, res, next) => {
 })
 
 router.post('/:id/add', async (req, res, next) => {
-  console.log('----------> do i go in here?')
   try {
     let cartId = await Cart.findOrCreate({
       where: {

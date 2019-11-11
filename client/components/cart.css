@@ -1,0 +1,12 @@
+#cart-bracelet {
+  display: flex;
+  justify-content: center;
+}
+
+#single-bracelet-info {
+  flex-basis: 50%;
+}
+
+#single-bracelet-image-cart {
+  flex-basis: 50%;
+}

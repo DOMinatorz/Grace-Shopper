@@ -9,6 +9,7 @@ import {
 } from '../store/addToCart'
 import {getAllBraceletsThunk} from '../store/bracelet'
 import {Button} from 'react-bootstrap'
+import './cart.css'
 
 export class Cart extends Component {
   componentDidMount() {
@@ -30,7 +31,7 @@ export class Cart extends Component {
 
           {filteredBracelets.map(bracelet => {
             return (
-              <div key={bracelet.id}>
+              <div id="cart-bracelet" key={bracelet.id}>
                 <div id="single-bracelet-info">
                   <h3>Bracelet id: {bracelet.id}</h3>
                   <h3>Style: {bracelet.style}</h3>
