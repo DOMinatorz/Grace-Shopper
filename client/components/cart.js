@@ -8,6 +8,7 @@ import {
   incrementQtyThunk
 } from '../store/addToCart'
 import {getAllBraceletsThunk} from '../store/bracelet'
+import {Button} from 'react-bootstrap'
 
 export class Cart extends Component {
   componentDidMount() {
@@ -42,14 +43,14 @@ export class Cart extends Component {
                   Total: ${bracelet.price * this.props.cart[bracelet.id] / 100}
                 </h3>
 
-                <button
+                <Button
                   type="submit"
                   onClick={() => this.props.incrementQty(bracelet.id)}
                 >
                   +
-                </button>
+                </Button>
 
-                <button
+                <Button
                   type="submit"
                   // onClick={() =>
                   //   this.props.cart[bracelet.id] === 1
@@ -59,15 +60,15 @@ export class Cart extends Component {
                   onClick={() => this.props.decrementQty(bracelet.id)}
                 >
                   -
-                </button>
+                </Button>
                 <br />
-                <button
+                <Button
                   type="submit"
                   onClick={() => this.props.removeFromCart(bracelet.id)}
                 >
                   {' '}
-                  X
-                </button>
+                  x
+                </Button>
               </div>
             )
           })}

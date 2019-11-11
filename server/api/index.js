@@ -4,7 +4,6 @@ module.exports = router
 // any PUT POST DELETE -> protect these as well.
 // gatekeeper middleware
 
-// gatekeeper.js
 function isUser(req, res, next) {
   if (process.env.NODE_ENV !== 'test') {
     if (!req.user) {
@@ -15,11 +14,8 @@ function isUser(req, res, next) {
   }
 }
 
-// block user routes
 router.use('/users', require('./users'))
-// this is fine for everyone to see
 router.use('/bracelets', require('./bracelets'))
-// must block cart -> allow only the user to see their own cart
 router.use('/cart', require('./cart'))
 
 router.use('/checkout', require('./checkout'))

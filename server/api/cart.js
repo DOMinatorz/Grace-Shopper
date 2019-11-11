@@ -42,10 +42,8 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// still need to test because unable to test this using postman currently
 router.post('/:id/add', async (req, res, next) => {
   try {
-    // if the user already has this item in the cart, this will return a value that we can use in the findOrCreate
     let cartId = await Cart.findOrCreate({
       where: {
         userId: req.user.id,
@@ -70,19 +68,6 @@ router.post('/:id/add', async (req, res, next) => {
     next(err)
   }
 })
-
-// router.put('/:id/increase', async (req, res, next) => {
-//   try {
-//     const updatedPurchase = await Cart.findById(req.params.id).then(
-//       bracelet => {
-//         bracelet.update({quantity: bracelet.quantity + 1})
-//       }
-//     )
-//     res.send(updatedPurchase)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
 
 router.put('/:id/decrease', async (req, res, next) => {
   try {
@@ -125,7 +110,6 @@ router.delete('/:id/delete', async (req, res, next) => {
     })
     if (singleBracelet) {
       await singleBracelet.destroy()
-      console.log('returned from destroy')
       res.status(200).send(singleBracelet)
     } else {
       res
