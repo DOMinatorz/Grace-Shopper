@@ -4,7 +4,7 @@ import './landing-page.css'
 export const LandingPage = () => {
   return (
     <div id="landing-page">
-      <a href="https://imgur.com/BAb08Pv">
+      <a href="/shop">
         <img src="https://i.imgur.com/BAb08Pv.png" />
       </a>
     </div>
