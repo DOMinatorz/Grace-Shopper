@@ -28,6 +28,7 @@ router.get('/', async (req, res, next) => {
       },
       attributes: ['id']
     })
+
     cartId = cartId[0].id
 
     let cart = await ItemsCart.findAll({

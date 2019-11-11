@@ -31,7 +31,8 @@ export class Cart extends Component {
       // })
       return (
         <div>
-          <h1>Your cart!</h1>
+          <h1>Your cart! 🛒</h1>
+
           {filteredBracelets.map(bracelet => {
             return (
               <div key={bracelet.id}>

@@ -54,7 +54,6 @@ export const checkoutThunk = () => async dispatch => {
     console.log('I HIT THE THUNK!!!!!!!!!!!')
     await axios.put(`/api/checkout`)
     dispatch(getAllBraceletsThunk)
-    dispatch(clearCart)
   } catch (error) {
     console.log('there was an error in the checkoutThunk')
   }

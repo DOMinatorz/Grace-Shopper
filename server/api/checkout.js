@@ -30,6 +30,10 @@ router.put('/', async (req, res, next) => {
       currBracelet.save()
       itemCart[i].save()
     }
+    await Cart.create({
+      isPurchased: false,
+      userId
+    })
     res.sendStatus(200)
   } catch (error) {
     next(error)
@@ -46,7 +50,6 @@ router.put('/:guestcart', async (req, res, next) => {
     for (let i = 0; i < braceletIds.length; i++) {
       itemCart.push({braceletId: braceletIds[i], qty: cart[braceletIds[i]]})
     }
-    console.log('itemCart', itemCart)
     for (let i = 0; i < itemCart.length; i++) {
       let currBraceletId = itemCart[i].braceletId
       let currBracelet = await Bracelet.findByPk(currBraceletId)

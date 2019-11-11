@@ -3,28 +3,57 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import './navbar.css'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
+  <div className="pos">
     <h1>Bracelets Store</h1>
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/account">Account Page</Link>
-          <Link to="/cart">Cart</Link>
-          <a href="#" onClick={handleClick}>
+          <Link to="/home">
+            <a href="#" className="btn">
+              Home
+            </a>
+          </Link>
+          <Link to="/account">
+            <a href="#" className="btn">
+              Account
+            </a>
+          </Link>
+          <Link to="/cart">
+            <a href="#" className="btn">
+              Cart 🛒
+            </a>
+          </Link>
+          <a href="#" className="btn" onClick={handleClick}>
             Logout
           </a>
         </div>
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/cart">Cart</Link>
+          <Link to="/home">
+            <a href="#" className="btn">
+              Home
+            </a>
+          </Link>
+          <Link to="/login">
+            <a href="#" className="btn">
+              Login
+            </a>
+          </Link>
+          <Link to="/signup">
+            <a href="#" className="btn">
+              SignUp
+            </a>
+          </Link>
+          <Link to="/cart">
+            <a href="#" className="btn">
+              Cart
+            </a>
+          </Link>
         </div>
       )}
     </nav>

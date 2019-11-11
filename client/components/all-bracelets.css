@@ -1,0 +1,25 @@
+img,
+media {
+  max-width: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+
+#all_bracelets {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shop-item {
+  border: 0.0625rem solid #555;
+  box-shadow: 0 0 0.625rem 0.25rem #555;
+  flex-basis: 23%;
+  margin: 14px;
+  border: 3px solid bisque;
+}
+
+#banner {
+  width: 500px;
+  height: 450px;
+}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getCartThunk} from '../store/addToCart'
+import {getCartThunk, clearCart} from '../store/addToCart'
 import {getAllBraceletsThunk, checkoutThunk} from '../store/bracelet'
 
 export class UserCheckout extends Component {
@@ -12,15 +12,15 @@ export class UserCheckout extends Component {
   checkout() {
     this.props.checkoutThunk()
     alert('Thank you for your purchase')
+    this.props.clearCart()
     this.props.getCart()
-    // this.props.history.push('/home')
+    this.props.history.push('/home')
   }
 
   render() {
     if (!Object.keys(this.props.cart).length) {
       return <div>Your Cart is Empty!</div>
     } else {
-      console.log('THE CART------>', this.props.cart)
       let filteredBracelets = this.props.bracelets.filter(bracelet => {
         return this.props.cart.hasOwnProperty(bracelet.id)
       })
@@ -71,7 +71,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getAllBracelets: () => dispatch(getAllBraceletsThunk()),
   getCart: () => dispatch(getCartThunk()),
-  checkoutThunk: () => dispatch(checkoutThunk())
+  checkoutThunk: () => dispatch(checkoutThunk()),
+  clearCart: () => dispatch(clearCart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserCheckout)

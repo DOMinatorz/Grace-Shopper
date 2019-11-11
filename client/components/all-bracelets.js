@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getAllBraceletsThunk} from '../store/bracelet'
 import {Link} from 'react-router-dom'
+import './all-bracelets.css'
 
 class AllBracelets extends Component {
   // constructor () {
@@ -23,17 +24,23 @@ class AllBracelets extends Component {
     if (!bracelets) return <div>Loading...</div>
     else {
       return (
-        <div id="all_bracelets">
-          {bracelets.map(bracelet => {
-            //console.log('this is bracelet', bracelet)
-            return (
-              <div key={bracelet.id} bracelet={bracelet}>
-                <Link to={`/bracelets/${bracelet.id}`}>
-                  Bracelet {bracelet.id}
-                </Link>
-              </div>
-            )
-          })}
+        <div>
+          <div id="all_bracelets">
+            {bracelets.map(bracelet => {
+              //console.log('this is bracelet', bracelet)
+              return (
+                <div
+                  className="shop-item"
+                  key={bracelet.id}
+                  bracelet={bracelet}
+                >
+                  <Link to={`/bracelets/${bracelet.id}`}>
+                    <img src={bracelet.image} />
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
         </div>
       )
     }
