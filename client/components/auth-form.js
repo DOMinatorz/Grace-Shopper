@@ -2,17 +2,17 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import './auth-form.css'
 
 /**
  * COMPONENT
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log('-------------', name)
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
+      <form className="login" onSubmit={handleSubmit} name={name}>
         {name === 'signup' && (
           <div>
             <div>
@@ -41,12 +41,15 @@ const AuthForm = props => {
           </label>
           <input name="password" type="password" />
         </div>
+        <br />
         <div>
           <button type="submit">{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
+        <a className="loginBtn loginBtn--google" href="/auth/google">
+          {displayName} with Google
+        </a>
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
     </div>
   )
 }
