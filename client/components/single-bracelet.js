@@ -16,8 +16,6 @@ class SingleBracelet extends Component {
     this.props.getSingleBracelet(id)
   }
 
-  // there is an issue where when you navigate between bracelets the previous bracelet loads for a millisecond before changing. Thinking we can use componentWillUpdate or componentWillReceiveProps or something like that
-
   render() {
     let bracelet = this.props.bracelet[0]
 
@@ -60,7 +58,6 @@ class SingleBracelet extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getSingleBracelet: id => dispatch(getSingleBraceletThunk(id)),
-  // this may cause issues with logged in (thunk) vs guest (plain action creator)
   addToCart: id => dispatch(addToCartThunk(id)),
   incrementQty: id => dispatch(incrementQtyThunk(id)),
   getCart: () => dispatch(getCartThunk())

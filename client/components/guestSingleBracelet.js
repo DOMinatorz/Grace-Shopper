@@ -21,8 +21,6 @@ class GuestSingleBracelet extends Component {
     this.props.addToGCart(bracelet.id)
   }
 
-  // there is an issue where when you navigate between bracelets the previous bracelet loads for a millisecond before changing. Thinking we can use componentWillUpdate or componentWillReceiveProps or something like that
-
   render() {
     let bracelet = this.props.bracelet[0]
 

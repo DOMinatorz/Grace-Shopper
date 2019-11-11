@@ -3,19 +3,24 @@ import {connect} from 'react-redux'
 
 export class AccountPage extends Component {
   render() {
+    let user = this.props.user
     return (
-      <div>
+      <div id="account-page">
+        <h2> Hey there, {user.firstName}! </h2>
+        <h3>Account info:</h3>
+        <h4>
+          Name: {user.firstName} {user.lastName} <br />
+          Email: {user.email}
+          <br />
+        </h4>
         <h3>Order History</h3>
-        <h3>Account info</h3>
-        <h3>Favorites</h3>
-        <h3>Wishlist</h3>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  user: state.user
+})
 
-const mapDispatchToProps = {}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AccountPage)
+export default connect(mapStateToProps)(AccountPage)

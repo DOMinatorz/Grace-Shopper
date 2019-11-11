@@ -1,8 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-// this is for the through table
-
 const ItemsCart = db.define('items_cart', {
   price: {
     type: Sequelize.INTEGER,
