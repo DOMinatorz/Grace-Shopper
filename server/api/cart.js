@@ -21,6 +21,35 @@ module.exports = router
 
 // gatekeeper function to check if user is logged in
 
+router.get('/history', async (req, res, next) => {
+  try {
+    let cartIds = await Cart.findAll({
+      where: {
+        userId: req.user.id,
+        isPurchased: true
+      },
+      attributes: ['id']
+    })
+
+    // console.log(cartIds,'cartids')
+    let result = []
+    for (let i = 0; i < cartIds.length; i++) {
+      let record = await ItemsCart.findAll({
+        where: {
+          cartId: cartIds[i].id
+        },
+        attributes: ['braceletId', 'price', 'qty', 'cartId', 'updatedAt']
+      })
+      result.push(record)
+    }
+    //  console.log('result',result)
+    if (result) res.json(result)
+    else res.status(404).send('404040404004')
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/', async (req, res, next) => {
   try {
     let cartId = await Cart.findAll({
