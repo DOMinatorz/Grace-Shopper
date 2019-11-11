@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {
   Login,
   Signup,
-  UserHome,
+  LandingPage,
   AccountPage,
   Cart,
   GuestCart,
@@ -31,12 +31,14 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route exact path="/" component={LandingPage} />
         <Route exact path="/shop" component={AllBracelets} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         {isLoggedIn ? (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route exact path="/" component={LandingPage} />
             <Route path="/account" component={AccountPage} />
             <Route path="/cart" component={Cart} />
             <Route path="/checkout" component={UserCheckout} />
@@ -44,6 +46,7 @@ class Routes extends Component {
           </Switch>
         ) : (
           <Switch>
+            <Route exact path="/" component={LandingPage} />
             <Route path="/cart" component={GuestCart} />
             <Route path="/bracelets/:id" component={GuestSingleBracelet} />
             <Route path="/guestcheckout" component={GuestCheckout} />
