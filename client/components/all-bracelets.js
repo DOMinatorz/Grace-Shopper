@@ -9,6 +9,7 @@ class AllBracelets extends Component {
     super()
     this.filter = this.filter.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.clearFilter = this.clearFilter.bind(this)
     this.state = {
       isFiltered: false,
       filter: [],
@@ -23,6 +24,7 @@ class AllBracelets extends Component {
         isFiltered: false
       })
     }
+
     let filteredBracelets = this.props.bracelets.filter(bracelet => {
       return bracelet[attribute] === obj[attribute]
     })
@@ -37,6 +39,15 @@ class AllBracelets extends Component {
       filter: [filter]
     })
     this.filter(filter)
+  }
+
+  clearFilter(event) {
+    console.log('this is event', event)
+    this.setState({
+      isFiltered: false,
+      filter: [],
+      filteredBracelets: []
+    })
   }
 
   componentDidMount() {
@@ -59,7 +70,7 @@ class AllBracelets extends Component {
               <label>Color</label>
               <select id="color" onChange={this.handleChange}>
                 <option value="none"> </option>
-                <option value="Black"> Black</option>
+                <option value="Black">Black</option>
                 <option value="Cerise"> Cerise</option>
                 <option value="Gray"> Gray</option>
                 <option value="Ocean"> Ocean</option>
@@ -84,6 +95,11 @@ class AllBracelets extends Component {
                 <option value="Pair"> Pair</option>
                 <option value="Trio"> Trio</option>
               </select>
+            </div>
+            <div>
+              <button type="button" onClick={this.clearFilter}>
+                Clear
+              </button>
             </div>
           </div>
           <div id="all_bracelets">
