@@ -130,7 +130,9 @@ class AllBracelets extends Component {
                 )
               })
             ) : (
-              <p>Sorry, no products match those filters!</p>
+              <p id="sorry-no-bracelets">
+                Sorry, no products match those filters!
+              </p>
             )}
           </div>
         </div>

@@ -34,10 +34,8 @@ media {
 }
 
 /* this isnt working */
-#color-filter #material-filter #style-filter {
-  margin: 5%;
-}
-
-p {
-  text-align: center;
+#color-filter,
+#material-filter,
+#style-filter {
+  margin: 2px;
 }
