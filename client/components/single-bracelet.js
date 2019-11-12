@@ -36,10 +36,10 @@ class SingleBracelet extends Component {
               <a
                 onClick={() => this.props.addToCart(bracelet.id)}
                 className="addtocart"
-                href={
-                  // eslint-disable-next-line no-script-url
-                  'javascript:if (typeof qty == "undefined") {qty = 0}; document.getElementsByClassName("qty")[0].innerHTML = ++qty;'
-                }
+                // href={
+                //   // eslint-disable-next-line no-script-url
+                //   'javascript:if (typeof qty == "undefined") {qty = 0}; document.getElementsByClassName("qty")[0].innerHTML = ++qty;'
+                // }
               />
               <span className="qty">0</span>
             </div>
