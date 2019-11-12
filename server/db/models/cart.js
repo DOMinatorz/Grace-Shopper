@@ -6,6 +6,14 @@ const Cart = db.define('cart', {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
     allowNull: false
+  },
+  totalCost: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  isShipped: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
