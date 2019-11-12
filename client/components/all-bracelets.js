@@ -25,6 +25,7 @@ class AllBracelets extends Component {
       let filterObj = obj[key]
       let attribute = Object.keys(filterObj)[0]
       filteredBracelets = filteredBracelets.filter(bracelet => {
+        if (filterObj[attribute] === 'none') return true
         return bracelet[attribute] === filterObj[attribute]
       })
     }
