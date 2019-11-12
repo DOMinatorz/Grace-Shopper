@@ -139,8 +139,3 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllBracelets)
-
-function reset(event) {
-  let filterHtml = event.target
-  let allFiltersHtml = event.target.parentElement.parentElement
-}
