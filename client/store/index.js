@@ -7,14 +7,15 @@ import {bracelets} from './bracelet'
 
 import {guestCart} from './guestcartstore'
 
-import {cart, total, userCart, userTotal} from './addToCart'
+import {cart, total, userCart, userTotal, userHistory} from './addToCart'
 
 const reducer = combineReducers({
   user,
   bracelets,
   userCart,
   userTotal,
-  guestCart
+  guestCart,
+  userHistory
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

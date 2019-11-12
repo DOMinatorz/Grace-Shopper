@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {Next} from 'react-bootstrap/PageItem'
 
 /**
  * ACTION TYPES
@@ -11,12 +12,14 @@ const INCREASE_QTY = 'INCREASE_QTY'
 const DECREASE_QTY = 'DECREASE_QTY'
 const GET_GUEST_CART = 'GET_GUEST_CART'
 const CLEAR_CART = 'CLEAR_CART'
+const GET_HISTORY = 'GET_HISTORY'
 
 /**
  * INITIAL STATE
  */
 const initialCart = {}
 const initialTotal = 0
+const initialHistory = []
 
 /**
  * ACTION CREATORS
@@ -51,9 +54,23 @@ export const decrementQty = bracelet => ({
   bracelet
 })
 
+export const getHistory = history => ({
+  type: GET_HISTORY,
+  history
+})
+
 /**
  * THUNK CREATORS
  */
+
+export const getHistoryThunk = () => async dispatch => {
+  try {
+    const {data} = await axios.get('api/cart/history')
+    dispatch(getHistory(data))
+  } catch (err) {
+    console.error('history thunk error', error)
+  }
+}
 
 export const getCartThunk = () => async dispatch => {
   try {
@@ -134,6 +151,15 @@ export const userCart = (state = initialCart, action) => {
       delete newState[action.bracelet.braceletId]
       return newState
 
+    default:
+      return state
+  }
+}
+
+export const userHistory = (state = initialHistory, action) => {
+  switch (action.type) {
+    case GET_HISTORY:
+      return action.history
     default:
       return state
   }
