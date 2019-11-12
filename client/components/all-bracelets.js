@@ -12,7 +12,6 @@ class AllBracelets extends Component {
     this.clearFilter = this.clearFilter.bind(this)
     this.state = {
       isFiltered: false,
-      filter: [],
       filteredBracelets: []
     }
   }
@@ -32,11 +31,11 @@ class AllBracelets extends Component {
   }
 
   handleChange(event) {
+    console.log('this is event.target', event.target)
     let filter = {[event.target.id]: event.target.value}
 
     this.setState({
-      isFiltered: true,
-      filter: [filter]
+      isFiltered: true
     })
     this.filter(filter)
   }
@@ -45,7 +44,6 @@ class AllBracelets extends Component {
     console.log('this is event', event)
     this.setState({
       isFiltered: false,
-      filter: [],
       filteredBracelets: []
     })
   }
@@ -55,7 +53,6 @@ class AllBracelets extends Component {
   }
 
   render() {
-    console.log('this is state in render', this.state)
     let bracelets
     if (this.state.isFiltered) {
       bracelets = this.state.filteredBracelets
