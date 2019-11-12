@@ -18,6 +18,11 @@ class AllBracelets extends Component {
 
   filter(obj) {
     let attribute = Object.keys(obj)[0]
+    if (obj[attribute] === 'none') {
+      return this.setState({
+        isFiltered: false
+      })
+    }
     let filteredBracelets = this.props.bracelets.filter(bracelet => {
       return bracelet[attribute] === obj[attribute]
     })
