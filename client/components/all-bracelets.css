@@ -26,3 +26,16 @@ media {
   width: 500px;
   height: 450px;
 }
+
+#filter-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* this isnt working */
+#color-filter,
+#material-filter,
+#style-filter {
+  margin: 2px;
+}
