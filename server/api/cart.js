@@ -3,24 +3,6 @@ const {Cart, ItemsCart, Bracelet, User} = require('../db/models')
 const {Op} = require('sequelize')
 module.exports = router
 
-// router.get('/:id', async (req, res, next) => {
-//   try {
-//     const cart = await Cart.findAll({
-//       where: {
-//         userId: req.params.id,
-//         isPurchased: false
-//       }
-//     })
-//     if (!cart) {
-//       res.status(404).send('Cart not found')
-//     } else res.send(cart)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
-
-// gatekeeper function to check if user is logged in
-
 router.get('/history', async (req, res, next) => {
   try {
     let cartIds = await Cart.findAll({
@@ -31,7 +13,6 @@ router.get('/history', async (req, res, next) => {
       attributes: ['id']
     })
 
-    // console.log(cartIds,'cartids')
     let result = []
     for (let i = 0; i < cartIds.length; i++) {
       let record = await ItemsCart.findAll({
