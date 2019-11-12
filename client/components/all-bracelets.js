@@ -18,11 +18,11 @@ class AllBracelets extends Component {
     }
   }
 
-  filter(arr) {
+  filter(obj) {
     let filteredBracelets = [...this.props.bracelets]
-    console.log('this is filteredBracelets before', filteredBracelets)
-    for (let i = 0; i < arr.length; i++) {
-      let filterObj = arr[i]
+    // eslint-disable-next-line guard-for-in
+    for (let key in obj) {
+      let filterObj = obj[key]
       let attribute = Object.keys(filterObj)[0]
       filteredBracelets = filteredBracelets.filter(bracelet => {
         return bracelet[attribute] === filterObj[attribute]
@@ -33,11 +33,15 @@ class AllBracelets extends Component {
 
   async handleChange(event) {
     let filter = {[event.target.id]: event.target.value}
+    let key = [event.target.id]
 
-    await this.setState({
+    await this.setState(prevState => ({
       isFiltered: true,
-      filters: [...this.state.filters, filter]
-    })
+      filters: {
+        ...prevState.filters,
+        [key]: filter
+      }
+    }))
     this.filter(this.state.filters)
   }
 
@@ -110,7 +114,7 @@ class AllBracelets extends Component {
             </div>
           </div>
           <div id="all_bracelets">
-            {bracelets.length > 1 ? (
+            {bracelets.length >= 1 ? (
               bracelets.map(bracelet => {
                 return (
                   <div
