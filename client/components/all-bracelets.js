@@ -109,7 +109,12 @@ class AllBracelets extends Component {
               </select>
             </div>
             <div>
-              <button type="button" onClick={this.clearFilter}>
+              <button
+                id="clear-btn"
+                className="btn"
+                type="button"
+                onClick={this.clearFilter}
+              >
                 Clear
               </button>
             </div>
