@@ -74,9 +74,9 @@ export class GuestCart extends Component {
                   <img src={bracelet.image} />
                 </div>
                 <div id="single-bracelet-info">
-                  <h3>Bracelet id: {bracelet.id}</h3>
-                  <h3>Style: {bracelet.style}</h3>
                   <h3>Color: {bracelet.color}</h3>
+                  <h3>Material: {bracelet.material}</h3>
+                  <h3>Style: {bracelet.style}</h3>
                   <h3>
                     Qty:{' '}
                     {JSON.parse(localStorage.getItem('gcart'))[bracelet.id]}
