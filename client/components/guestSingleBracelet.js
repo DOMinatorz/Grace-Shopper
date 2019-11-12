@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getSingleBraceletThunk} from '../store/bracelet'
-import {addToGCart} from '../store/guestcartstore'
+import {addToGCart, getGuestCart} from '../store/guestcartstore'
 import './single-bracelet.css'
 
 class GuestSingleBracelet extends Component {
   componentDidMount() {
     const id = Number(this.props.match.params.id)
+    this.props.getGuesstCart()
     this.props.getSingleBracelet(id)
   }
 
@@ -46,12 +47,12 @@ class GuestSingleBracelet extends Component {
               <a
                 onClick={() => this.increment(bracelet)}
                 className="addtocart"
-                href={
-                  // eslint-disable-next-line no-script-url
-                  'javascript:if (typeof qty == "undefined") {qty = 0}; document.getElementsByClassName("qty")[0].innerHTML = ++qty;'
-                }
               />
-              <span className="qty">0</span>
+              <span className="qty">
+                {this.props.cart === undefined
+                  ? 0
+                  : this.props.cart[bracelet.id]}
+              </span>
             </div>
             <div className="description">{bracelet.description}</div>
           </div>
@@ -62,12 +63,14 @@ class GuestSingleBracelet extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getSingleBracelet: id => dispatch(getSingleBraceletThunk(id)),
-  addToGCart: bracelet => dispatch(addToGCart(bracelet))
+  addToGCart: bracelet => dispatch(addToGCart(bracelet)),
+  getGuesstCart: () => dispatch(getGuestCart())
 })
 
 const mapStateToProps = state => {
   return {
-    bracelet: state.bracelets
+    bracelet: state.bracelets,
+    cart: state.guestCart
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(GuestSingleBracelet)

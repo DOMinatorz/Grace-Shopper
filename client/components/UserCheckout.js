@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getCartThunk, clearCart} from '../store/addToCart'
 import {getAllBraceletsThunk, checkoutThunk} from '../store/bracelet'
+import './UserCheckout.css'
 
 export class UserCheckout extends Component {
   componentDidMount() {
@@ -52,7 +53,11 @@ export class UserCheckout extends Component {
             )
           })}
           <h2> Your order's total is: ${orderTotal}</h2>
-          <button type="submit" onClick={() => this.checkout()}>
+          <button
+            className="submit"
+            type="submit"
+            onClick={() => this.checkout()}
+          >
             Submit Order
           </button>
         </div>
