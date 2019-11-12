@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getCartThunk, clearCart} from '../store/addToCart'
 import {getAllBraceletsThunk, checkoutThunk} from '../store/bracelet'
-import './userCheckout.css'
+import './UserCheckout.css'
 
 export class UserCheckout extends Component {
   componentDidMount() {
