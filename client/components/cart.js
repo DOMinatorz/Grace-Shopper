@@ -32,11 +32,9 @@ export class Cart extends Component {
           {filteredBracelets.map(bracelet => {
             return (
               <div id="cart-bracelet" key={bracelet.id}>
-                {/* <br /> */}
                 <div id="single-bracelet-image-cart">
                   <img src={bracelet.image} />
                 </div>
-                {/* <br/> */}
 
                 <div id="single-bracelet-info">
                   <h3>Bracelet id: {bracelet.id}</h3>
@@ -44,9 +42,8 @@ export class Cart extends Component {
                   <h3>Color: {bracelet.color}</h3>
                   <h3>Qty: {this.props.cart[bracelet.id]}</h3>
                   <h3>
-                    Total: ${bracelet.price *
-                      this.props.cart[bracelet.id] /
-                      100}
+                    Total: $
+                    {bracelet.price * this.props.cart[bracelet.id] / 100}
                   </h3>
 
                   <Button
@@ -62,7 +59,7 @@ export class Cart extends Component {
                   >
                     -
                   </Button>
-                  {/* <br /> */}
+
                   <Button
                     type="submit"
                     onClick={() => this.props.removeFromCart(bracelet.id)}
@@ -70,7 +67,6 @@ export class Cart extends Component {
                     x
                   </Button>
                   <hr />
-                  {/* <br /> */}
                 </div>
               </div>
             )
