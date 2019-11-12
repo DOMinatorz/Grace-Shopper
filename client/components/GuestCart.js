@@ -8,6 +8,8 @@ import {
   getGuestCart
 } from '../store/guestcartstore'
 import {getAllBraceletsThunk} from '../store/bracelet'
+import {Button} from 'react-bootstrap'
+import './cart.css'
 
 export class GuestCart extends Component {
   constructor() {
@@ -67,39 +69,52 @@ export class GuestCart extends Component {
           <h1>Your cart!</h1>
           {visibleCart.map(bracelet => {
             return (
-              <div key={bracelet.id}>
-                <h3>Bracelet id: {bracelet.id}</h3>
-                <h3>Style: {bracelet.style}</h3>
-                <h3>Color: {bracelet.color}</h3>
-                <h3>
-                  Qty: {JSON.parse(localStorage.getItem('gcart'))[bracelet.id]}
-                </h3>
-                <h3>
-                  Total:{' '}
-                  {bracelet.price /
-                    100 *
-                    JSON.parse(localStorage.getItem('gcart'))[bracelet.id]}
-                </h3>
+              <div id="cart-bracelet" key={bracelet.id}>
+                <div id="single-bracelet-image-cart">
+                  <img src={bracelet.image} />
+                </div>
+                <div id="single-bracelet-info">
+                  <h3>Bracelet id: {bracelet.id}</h3>
+                  <h3>Style: {bracelet.style}</h3>
+                  <h3>Color: {bracelet.color}</h3>
+                  <h3>
+                    Qty:{' '}
+                    {JSON.parse(localStorage.getItem('gcart'))[bracelet.id]}
+                  </h3>
+                  <h3>
+                    Total:{' '}
+                    {bracelet.price /
+                      100 *
+                      JSON.parse(localStorage.getItem('gcart'))[bracelet.id]}
+                  </h3>
 
-                <button type="submit" onClick={() => this.increment(bracelet)}>
-                  +
-                </button>
+                  <Button
+                    type="submit"
+                    onClick={() => this.increment(bracelet)}
+                  >
+                    +
+                  </Button>
 
-                <button type="submit" onClick={() => this.decrement(bracelet)}>
-                  -
-                </button>
+                  <Button
+                    type="submit"
+                    onClick={() => this.decrement(bracelet)}
+                  >
+                    -
+                  </Button>
 
-                <br />
-
-                <button type="submit" onClick={() => this.remove(bracelet)}>
-                  {' '}
-                  X
-                </button>
+                  <Button type="submit" onClick={() => this.remove(bracelet)}>
+                    {' '}
+                    X
+                  </Button>
+                  <hr />
+                </div>
               </div>
             )
           })}
           <Link to="/guestcheckout">
-            <button type="button">Go To Checkout</button>
+            <button type="button" className="checkout">
+              Go To Checkout
+            </button>
           </Link>
         </div>
       )
