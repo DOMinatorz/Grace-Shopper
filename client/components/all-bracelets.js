@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {getAllBraceletsThunk} from '../store/bracelet'
 import {Link} from 'react-router-dom'
 import './all-bracelets.css'
+import {object} from 'prop-types'
 
 class AllBracelets extends Component {
   constructor() {
@@ -17,28 +18,27 @@ class AllBracelets extends Component {
     }
   }
 
-  filter(obj) {
-    let attribute = Object.keys(obj)[0]
-    if (obj[attribute] === 'none') {
-      return this.setState({
-        isFiltered: false
+  filter(arr) {
+    let filteredBracelets = [...this.props.bracelets]
+    console.log('this is filteredBracelets before', filteredBracelets)
+    for (let i = 0; i < arr.length; i++) {
+      let filterObj = arr[i]
+      let attribute = Object.keys(filterObj)[0]
+      filteredBracelets = filteredBracelets.filter(bracelet => {
+        return bracelet[attribute] === filterObj[attribute]
       })
     }
-
-    let filteredBracelets = this.props.bracelets.filter(bracelet => {
-      return bracelet[attribute] === obj[attribute]
-    })
     this.setState({filteredBracelets: filteredBracelets})
   }
 
-  handleChange(event) {
+  async handleChange(event) {
     let filter = {[event.target.id]: event.target.value}
-    console.log('this is filter', filter)
 
-    this.setState({
-      isFiltered: true
+    await this.setState({
+      isFiltered: true,
+      filters: [...this.state.filters, filter]
     })
-    this.filter(filter)
+    this.filter(this.state.filters)
   }
 
   clearFilter(event) {
@@ -67,7 +67,8 @@ class AllBracelets extends Component {
       bracelets = this.state.filteredBracelets
     } else bracelets = this.props.bracelets
 
-    if (!bracelets.length) return <div>Loading...</div>
+    if (!bracelets.length && !this.state.isFiltered)
+      return <div>Loading...</div>
     else
       return (
         <div id="all-bracelets-page">
@@ -109,19 +110,23 @@ class AllBracelets extends Component {
             </div>
           </div>
           <div id="all_bracelets">
-            {bracelets.map(bracelet => {
-              return (
-                <div
-                  className="shop-item"
-                  key={bracelet.id}
-                  bracelet={bracelet}
-                >
-                  <Link to={`/bracelets/${bracelet.id}`}>
-                    <img src={bracelet.image} />
-                  </Link>
-                </div>
-              )
-            })}
+            {bracelets.length > 1 ? (
+              bracelets.map(bracelet => {
+                return (
+                  <div
+                    className="shop-item"
+                    key={bracelet.id}
+                    bracelet={bracelet}
+                  >
+                    <Link to={`/bracelets/${bracelet.id}`}>
+                      <img src={bracelet.image} />
+                    </Link>
+                  </div>
+                )
+              })
+            ) : (
+              <p>Sorry, no products match those filters!</p>
+            )}
           </div>
         </div>
       )
