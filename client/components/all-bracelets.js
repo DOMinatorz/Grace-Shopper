@@ -12,6 +12,7 @@ class AllBracelets extends Component {
     this.clearFilter = this.clearFilter.bind(this)
     this.state = {
       isFiltered: false,
+      filters: [],
       filteredBracelets: []
     }
   }
@@ -31,8 +32,8 @@ class AllBracelets extends Component {
   }
 
   handleChange(event) {
-    console.log('this is event.target', event.target)
     let filter = {[event.target.id]: event.target.value}
+    console.log('this is filter', filter)
 
     this.setState({
       isFiltered: true
@@ -41,9 +42,17 @@ class AllBracelets extends Component {
   }
 
   clearFilter(event) {
-    console.log('this is event', event)
+    let color = document.getElementById('color')
+    let material = document.getElementById('material')
+    let style = document.getElementById('style')
+
+    color.selectedIndex = 0
+    material.selectedIndex = 0
+    style.selectedIndex = 0
+
     this.setState({
       isFiltered: false,
+      filters: [],
       filteredBracelets: []
     })
   }
@@ -130,3 +139,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllBracelets)
+
+function reset(event) {
+  let filterHtml = event.target
+  let allFiltersHtml = event.target.parentElement.parentElement
+}
