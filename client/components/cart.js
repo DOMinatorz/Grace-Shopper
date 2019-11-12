@@ -18,7 +18,6 @@ export class Cart extends Component {
   }
 
   render() {
-    console.log('*****************', this.props.cart)
     if (!Object.keys(this.props.cart).length)
       return <div>Your Cart is Empty</div>
     else {
@@ -33,10 +32,12 @@ export class Cart extends Component {
           {filteredBracelets.map(bracelet => {
             return (
               <div id="cart-bracelet" key={bracelet.id}>
-                <br />
+                {/* <br /> */}
                 <div id="single-bracelet-image-cart">
                   <img src={bracelet.image} />
                 </div>
+                {/* <br/> */}
+
                 <div id="single-bracelet-info">
                   <h3>Bracelet id: {bracelet.id}</h3>
                   <h3>Style: {bracelet.style}</h3>
@@ -61,20 +62,23 @@ export class Cart extends Component {
                   >
                     -
                   </Button>
-                  <br />
+                  {/* <br /> */}
                   <Button
                     type="submit"
                     onClick={() => this.props.removeFromCart(bracelet.id)}
                   >
                     x
                   </Button>
-                  <br />
+                  <hr />
+                  {/* <br /> */}
                 </div>
               </div>
             )
           })}
           <Link to="/checkout">
-            <button type="button">Go To Checkout</button>
+            <button type="button" className="checkout">
+              Go To Checkout
+            </button>
           </Link>
         </div>
       )
