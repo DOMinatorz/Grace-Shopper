@@ -78,9 +78,9 @@ class AllBracelets extends Component {
       return (
         <div id="all-bracelets-page">
           <div id="filter-options">
-            <div id="color-filter">
+            <div className="select" id="color-filter">
               <label>
-                Color:{' '}
+                Color
                 <select id="color" onChange={this.handleChange}>
                   <option value="none"> </option>
                   <option value="Black">Black</option>
@@ -91,9 +91,9 @@ class AllBracelets extends Component {
                 </select>
               </label>
             </div>
-            <div id="material-filter">
+            <div className="select" id="material-filter">
               <label>
-                Material:{' '}
+                Material
                 <select id="material" onChange={this.handleChange}>
                   <option value="none"> </option>
 
@@ -102,9 +102,9 @@ class AllBracelets extends Component {
                 </select>
               </label>
             </div>
-            <div id="style-filter">
+            <div className="select" id="style-filter">
               <label>
-                Style:{' '}
+                Style
                 <select id="style" onChange={this.handleChange}>
                   <option value="none"> </option>
 
@@ -114,15 +114,17 @@ class AllBracelets extends Component {
                 </select>
               </label>
             </div>
-            <div>
-              <button
-                id="clear-btn"
-                className="btn"
-                type="button"
-                onClick={this.clearFilter}
-              >
-                Clear
-              </button>
+
+            <div className="one">
+              <a href="#">
+                <button
+                  type="button"
+                  className="curve-stroke"
+                  onClick={this.clearFilter}
+                >
+                  Clear
+                </button>
+              </a>
             </div>
           </div>
           <div id="all_bracelets">
