@@ -13,7 +13,7 @@ export class AccountPage extends Component {
     if (this.props.history.length === 0) {
       return <div>Your History is Empty</div>
     } else {
-      let orderHistory = this.props.history[0]
+      let orderHistory = this.props.history
       let user = this.props.user
 
       if (!orderHistory.length) return <h4>No orders made</h4>
@@ -24,11 +24,22 @@ export class AccountPage extends Component {
             <h3>Order History</h3>
             <div>
               {orderHistory.map(record => {
+                let total = 0
+                console.log('record', record)
                 return (
-                  <div key={record.braceletId}>
-                    <h4>Bracelet {record.braceletId}</h4>
-                    <h5>Quantity {record.qty}</h5>
-                    <h5>Time Order Made: {record.updatedAt}</h5>
+                  <div key={record[0].updatedAt}>
+                    {record.map(bracelet => {
+                      console.log(bracelet)
+                      total += bracelet.price * bracelet.qty
+                      return (
+                        <div key={bracelet.braceletId}>
+                          <h4>Bracelet {bracelet.braceletId}</h4>
+                          <h5>Quantity {bracelet.qty}</h5>
+                        </div>
+                      )
+                    })}
+                    <h5>Order Total: ${total / 100}</h5>
+                    <h5>Time Order Made: {record[0].updatedAt}</h5>
                   </div>
                 )
               })}

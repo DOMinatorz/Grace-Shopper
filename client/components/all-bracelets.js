@@ -79,34 +79,40 @@ class AllBracelets extends Component {
         <div id="all-bracelets-page">
           <div id="filter-options">
             <div className="select" id="color-filter">
-              <label>Color</label>
-              <select id="color" onChange={this.handleChange}>
-                <option value="none"> </option>
-                <option value="Black">Black</option>
-                <option value="Cerise"> Cerise</option>
-                <option value="Gray"> Gray</option>
-                <option value="Ocean"> Ocean</option>
-                <option value="Tan"> Tan</option>
-              </select>
+              <label>
+                Color
+                <select id="color" onChange={this.handleChange}>
+                  <option value="none"> </option>
+                  <option value="Black">Black</option>
+                  <option value="Cerise"> Cerise</option>
+                  <option value="Gray"> Gray</option>
+                  <option value="Ocean"> Ocean</option>
+                  <option value="Tan"> Tan</option>
+                </select>
+              </label>
             </div>
             <div className="select" id="material-filter">
-              <label>Material</label>
-              <select id="material" onChange={this.handleChange}>
-                <option value="none"> </option>
+              <label>
+                Material
+                <select id="material" onChange={this.handleChange}>
+                  <option value="none"> </option>
 
-                <option value="Leather"> Leather</option>
-                <option value="Suede"> Suede</option>
-              </select>
+                  <option value="Leather"> Leather</option>
+                  <option value="Suede"> Suede</option>
+                </select>
+              </label>
             </div>
             <div className="select" id="style-filter">
-              <label>Style</label>
-              <select id="style" onChange={this.handleChange}>
-                <option value="none"> </option>
+              <label>
+                Style
+                <select id="style" onChange={this.handleChange}>
+                  <option value="none"> </option>
 
-                <option value="Solitary"> Solitary</option>
-                <option value="Pair"> Pair</option>
-                <option value="Trio"> Trio</option>
-              </select>
+                  <option value="Solitary"> Solitary</option>
+                  <option value="Pair"> Pair</option>
+                  <option value="Trio"> Trio</option>
+                </select>
+              </label>
             </div>
 
             <div className="one">

@@ -13,6 +13,10 @@ media {
   flex-wrap: wrap;
 }
 
+/* #all-bracelets-page {
+  background-image: url('https://i.imgur.com/rfz36aE.png');
+} */
+
 .shop-item {
   border: 0.0625rem solid #555;
   box-shadow: 0 0 0.625rem 0.25rem #555;
@@ -76,7 +80,7 @@ select {
 #color-filter,
 #material-filter,
 #style-filter {
-  margin: 2px;
+  margin: 5px;
 }
 
 a {
