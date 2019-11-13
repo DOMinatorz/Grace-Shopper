@@ -78,7 +78,7 @@ class AllBracelets extends Component {
       return (
         <div id="all-bracelets-page">
           <div id="filter-options">
-            <div id="color-filter">
+            <div className="select" id="color-filter">
               <label>Color</label>
               <select id="color" onChange={this.handleChange}>
                 <option value="none"> </option>
@@ -89,7 +89,7 @@ class AllBracelets extends Component {
                 <option value="Tan"> Tan</option>
               </select>
             </div>
-            <div id="material-filter">
+            <div className="select" id="material-filter">
               <label>Material</label>
               <select id="material" onChange={this.handleChange}>
                 <option value="none"> </option>
@@ -98,7 +98,7 @@ class AllBracelets extends Component {
                 <option value="Suede"> Suede</option>
               </select>
             </div>
-            <div id="style-filter">
+            <div className="select" id="style-filter">
               <label>Style</label>
               <select id="style" onChange={this.handleChange}>
                 <option value="none"> </option>
@@ -108,10 +108,17 @@ class AllBracelets extends Component {
                 <option value="Trio"> Trio</option>
               </select>
             </div>
-            <div>
-              <button type="button" onClick={this.clearFilter}>
-                Clear
-              </button>
+
+            <div className="one">
+              <a href="#">
+                <button
+                  type="button"
+                  className="curve-stroke"
+                  onClick={this.clearFilter}
+                >
+                  Clear
+                </button>
+              </a>
             </div>
           </div>
           <div id="all_bracelets">

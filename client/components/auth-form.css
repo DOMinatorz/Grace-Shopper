@@ -64,7 +64,7 @@
 .login {
   overflow: hidden;
   background-color: gray;
-  padding: 40px 30px 30px 30px;
+  /* padding: 40px 30px 30px 30px; */
   border-radius: 10px;
   position: absolute;
   top: 50%;
@@ -72,12 +72,14 @@
   width: 400px;
   transform: translate(-50%, -50%);
   transition: transform 300ms, box-shadow 300ms;
-  box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2);
+  /* box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2); */
+  border: 0.0625rem solid #555;
+  box-shadow: 0 0 0.625rem 0.25rem #555;
 }
 
 .login input {
   font-family: 'Asap', sans-serif;
-  display: block;
+  /* display: block; */
   border-radius: 5px;
   font-size: 16px;
   background: white;
