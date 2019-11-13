@@ -45,7 +45,8 @@ export class GuestCheckout extends Component {
                   Qty: {JSON.parse(localStorage.getItem('gcart'))[bracelet.id]}
                 </h3>
                 <h3>
-                  Single Item Total: ${bracelet.price *
+                  Single Item Total: $
+                  {bracelet.price *
                     JSON.parse(localStorage.getItem('gcart'))[bracelet.id] /
                     100}
                 </h3>

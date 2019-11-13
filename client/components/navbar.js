@@ -7,7 +7,7 @@ import './navbar.css'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div className="pos">
-    <h1>Bracelets Store</h1>
+    <h1>Brace Shopper</h1>
     <nav>
       {isLoggedIn ? (
         <div>
