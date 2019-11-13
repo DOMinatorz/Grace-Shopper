@@ -14,7 +14,7 @@ export class UserCheckout extends Component {
     alert('Thank you for your purchase')
     this.props.clearCart()
     this.props.getCart()
-    this.props.history.push('/home')
+    this.props.history.push('/')
   }
 
   render() {

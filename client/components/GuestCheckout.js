@@ -12,7 +12,7 @@ export class GuestCheckout extends Component {
     this.props.guestCheckoutThunk(gCart)
     localStorage.setItem('gcart', JSON.stringify({}))
     alert('Thank you for your purchase')
-    this.props.history.push('/home')
+    this.props.history.push('/')
   }
 
   render() {
